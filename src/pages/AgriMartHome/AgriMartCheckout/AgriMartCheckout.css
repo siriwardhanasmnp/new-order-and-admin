@@ -1,0 +1,63 @@
+.py-3{
+    background-color: rgb(134, 74, 0);
+    width: 100%;
+}
+
+.content{
+    padding-top: 1em;
+}
+
+.form-group{
+    text-align: left;
+    padding-top: 1.5em;
+}
+
+.form-group-2{
+    inset-inline:initial;
+}
+
+.col-md-5{
+    /* background-color: blanchedalmond; */
+    padding-top: 5em;
+}
+
+.table-bordered{
+    padding-top: 100em;
+}
+.col-md-15{
+    padding-top: 0em;
+}
+
+.col-md-6{
+    text-align:left;
+}
+
+.col-md-12{
+    text-align: left;
+}
+.col-md-4{
+    text-align: left;
+}
+.col-md-15{
+    padding-top: 3em;
+}
+
+.row{
+    text-align: left;
+    padding-left: 1em;
+}
+
+.city-row{
+    display: inline-block;
+}
+.Form.Group{
+    padding-top: 0em;
+}
+
+/* .col-md-4{
+    padding-left: 1em;
+} */
+
+.col-md-4{
+    padding-top: 2em;
+}
