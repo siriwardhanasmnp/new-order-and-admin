@@ -160,15 +160,16 @@ const data = {
                     }, 
 
     ],
-    CustomerData:[
-            {
-                id: 34,
-                Name: 'Sarath Perera',
-                Address: 'C/188/B1 Walasmulla Rd, Ganemulla, Anuradhapur',
-                PostCode: 34652,
-                category: 'Vegetable',
-                PNo: '0712345678',},
-    ],
+
+    ProfileData:[
+        {
+            id: 34,
+            Name: 'Sarath Perera',
+            Email: "sarathperera@gmail.com",
+            Address: 'C/188/B1 Walasmulla Rd, Ganemulla, Anuradhapur',
+            PostCode: 34652,
+            PNo: '0712345678',},
+],
 };
 
 export default data;
