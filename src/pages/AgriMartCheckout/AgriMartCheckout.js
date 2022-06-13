@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useCart } from 'react-use-cart';
 import { useForm } from 'react-hook-form';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
 
 
@@ -171,6 +171,7 @@ const AgriMartCheckout =() =>{
                         </Form.Control.Feedback>
                     </Form.Group>
                     </div>
+                    
 
                     <div className='col'>
                     <Form.Group controlId="province">
@@ -200,16 +201,18 @@ const AgriMartCheckout =() =>{
                           {errors.zip}
                         </Form.Control.Feedback>
                     </Form.Group>
+                    </div></div>
 
-                    <Form.Group controlId="zip">
-                      <Button type='submit' onClick={handleSubmit} className="my-2" varient="primary">
-                        Pay
-                      </Button>
+                    <Form.Group controlId="submit-btn">
+                    <Row>
+                    <Col>
+                    <Link to="/ToCart"><button color='red' type='button' className='btn btn-primary'>Back to Cart</button></Link></Col>
+                    <Col><Link to="/ToPayment"><Button type='submit' onClick={handleSubmit} className="my-2" varient="primary">Pay</Button></Link></Col>
+                    </Row> 
                     </Form.Group>
-                    </div>
-                    </div>
-                  </Form>
-                  
+                    
+                    
+                   </Form>
                   </div>
                 </div>
               </div>
