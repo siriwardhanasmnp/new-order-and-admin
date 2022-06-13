@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Badge, Container, Nav, Navbar, FormControl, Dropdown } from "react-bootstrap";
 import { withRouter } from 'react-router-dom';
 import { useCart } from 'react-use-cart';
-import Cart from '../Pages/AgriMartCart/AgriMartCart';
+import Cart from '../pages/AgriMartCart/AgriMartCart';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Header = () => {

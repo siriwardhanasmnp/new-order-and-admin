@@ -17,7 +17,17 @@ export default function AgriMartHome() {
     <h3 class="text-content">Agricultural E-Commerce</h3>
     <h3 class="text-content"> Marketplace</h3>
     <div class="btn-style">
-    <Link to="/signin"><Button  variant="outline-secondary">Shop Now</Button></Link>
+    <Link to="/ToProducts">
+      
+      
+      
+      <Button  style={{
+          marginRight: "48%",
+          maxWidth: "200px",
+          maxHeight: "50px",
+          minWidth: "100px",
+          minHeight: "30px"
+        }} variant="outline-secondary">Shop Now</Button></Link>
     </div>
     
     </div>

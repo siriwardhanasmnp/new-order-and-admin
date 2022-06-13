@@ -1,8 +1,8 @@
 import React from 'react'
-import Itemcard from '../../Components/Itemcard';
-import data from "../../Components/data";
-import Header from "../../Components/Header";
-import AgriMartNavBar from '../../Components/AgriMartNavBar/AgriMartNavBar';
+import Itemcard from '../../components/AgriMartCartComponents/Itemcard';
+import data from "../../components/data";
+import Header from "../../components/Header";
+import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
 import { Card, Container } from 'react-bootstrap';
 import "./AgriMartProduct.css"
 
