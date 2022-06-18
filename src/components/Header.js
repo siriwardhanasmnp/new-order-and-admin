@@ -8,6 +8,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Header = () => {
 
+
+  //find assets by category
+exports.assetsByCategory = async(req,res) => {
+  const CATEGORY = req.params.assetCategory;
+  const asset = await Asset.find({"assetCategory" :{$regex: new RegExp([CATEGORY?.toLowerCase()], "i") }})
+  .then((assets)=>{
+      res.json({data:assets,success:true})
+      //res.status(400).json(assets)
+  }).catch((err)=>{
+          //console.log(err);
+          res.status(500).send({message:"No assets like that category!",error:err.message,success:false})
+  })
+  
+}
+
   const { 
     totalUniqueItems,
   } = useCart();
@@ -24,6 +39,20 @@ const Header = () => {
               placeholder="Search a product..."
             />
             </Navbar.Text>
+
+            <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+   Filter by Category
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+   
+    <Dropdown.Item href="#/action-2">Fruits</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Vegetables</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+
+
             <Nav>
                 
                 <Dropdown alignRight>
