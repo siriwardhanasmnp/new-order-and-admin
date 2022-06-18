@@ -23,11 +23,19 @@ import { inputAdornmentClasses } from '@mui/material';
 
 
 const AgriMartCheckout =() =>{
+  
+  //validation
   const{
     register,
-    HandleSubmit,
-    formState: {error}
+    formState: {errors}
   } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  // console.log(error)
+
   // const[form, setForm] = useState({})
   // const[errors, setErrors] = useState({})
   // const setField = (field, value) => {
@@ -150,6 +158,7 @@ const AgriMartCheckout =() =>{
                     <Form.Group controlId="name">
                       <Form.Label><PersonIcon/>Full Name</Form.Label>
                       <Form.Control required type="text" value={fullname} onChange={(e) => setfullname(e.target.value)} {...register("name", {required: "Name is Required"})}/>
+                      {errors.name && (<small className='text-danger'>Phone Number is Required</small>)}
                     </Form.Group>
                     </div>
                     <div className='col-md-4'>
