@@ -10,18 +10,7 @@ const Header = () => {
 
 
   //find assets by category
-exports.assetsByCategory = async(req,res) => {
-  const CATEGORY = req.params.assetCategory;
-  const asset = await Asset.find({"assetCategory" :{$regex: new RegExp([CATEGORY?.toLowerCase()], "i") }})
-  .then((assets)=>{
-      res.json({data:assets,success:true})
-      //res.status(400).json(assets)
-  }).catch((err)=>{
-          //console.log(err);
-          res.status(500).send({message:"No assets like that category!",error:err.message,success:false})
-  })
-  
-}
+
 
   const { 
     totalUniqueItems,

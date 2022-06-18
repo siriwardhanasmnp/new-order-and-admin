@@ -54,7 +54,8 @@ const data = {
                 decs: '*** (7)sdsd',
                 price: 1340,
                 category: 'Vegetable',
-                Fastdelevery: false,
+                Fastdelevery: "5 Days Delevery",
+
                 }, 
             {
                 id: 6,

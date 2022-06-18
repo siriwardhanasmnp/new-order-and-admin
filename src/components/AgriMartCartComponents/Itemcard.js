@@ -20,11 +20,14 @@ export const Itemcard = (props) => {
                 <h4 class="card-title">{props.title}</h4>
                 <h5 class="card-title">Rs. {props.price}</h5>
                 <p class="card-text-bottom">{props.desc}</p>
+                <p class="card-text-bottom"><h4>{props.delevery}</h4></p>
+
                 <button class="btn btn-success d-flex " onClick={()=>addItem(props.item)}>Add to Cart</button>  
-                {props.fastdelevery? (
-                <div>Fast Delevery</div>
-                ) : (<div>4 Days Delevery</div>)
-                }
+                
+
+                
+                
+                
                 <ReactStars
                       count={5}
                       onChange={ratingChanged}

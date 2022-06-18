@@ -4,6 +4,8 @@ import { useCart } from 'react-use-cart';
 import { useForm } from 'react-hook-form';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useState } from 'react';
+import axios from 'axios';
+import { Input } from 'react-input-component';
 
 
 import './AgriMartCheckout.css';
@@ -16,65 +18,118 @@ import PersonIcon from '@mui/icons-material/Person';
 import CallIcon from '@mui/icons-material/Call';
 import EmailIcon from '@mui/icons-material/Email';
 import HomeIcon from '@mui/icons-material/Home';
+import { inputAdornmentClasses } from '@mui/material';
+
+
 
 const AgriMartCheckout =() =>{
+  const{
+    register,
+    HandleSubmit,
+    formState: {error}
+  } = useForm();
+  // const[form, setForm] = useState({})
+  // const[errors, setErrors] = useState({})
+  // const setField = (field, value) => {
+  //   setForm({
+  //     ...form,
+  //     [field]:value
+  //   })
+
+  //   if(!!errors[field])
+  //   setErrors({
+  //     ...errors,
+  //     [field]:null
+  //   })
+  // }
+
+  // const validateForm = ()=>{
+  //   const{name, phone, email, address, city, province, zip} = form
+  //   const newErrors ={}
+
+  //   var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  //   if(!name || name === "") newErrors.name = "Please enter the full name"
+  //   if(!phone || phone === "") newErrors.phone = "Please enter the phone number"
+  //     else if (phone.length > 10 || phone.length < 10)newErrors.phone = "Enter valid phone number"
+  //   if(email==="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/") newErrors.email = "Please Waradiiiiiiiiiie"
+  //   //  else if (email.type(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))newErrors.email = "Enter valid email"
+  //   if(!address || address === "") newErrors.address = "Please enter the street address"
+  //   if(!city || city === "") newErrors.city = "Please enter the city"
+  //   if(!province || province === "") newErrors.province = "Please enter the province"
+  //   if(!zip || zip === "") newErrors.zip = "Please enter the zip code"
+  //     else if (zip.length > 5 || zip.length < 5)newErrors.zip = "Enter valid zip code"
+  //     else if (zip in ['1','2','3','4','9']) newErrors.address = "waradoiiii"
+  //   return newErrors
+  // }
+
+ 
+  // if (isEmpty) return <h1 >Your Cart is Empty</h1>
+
+
+
+    // const formErrors = validateForm()
+    // if(Object.keys(formErrors).length > 0){
+    //   setErrors(formErrors)
+    // }else{
+    //   console.log(Object);
+    //   console.log(form);
+    // }
+
+    // console.log(form)
+    const { 
+      isEmpty,
+      items,
+      cartTotal,
+    } = useCart();
   
-  const { 
-    isEmpty,
-    items,
-    cartTotal,
-  } = useCart();
+    // const onSubmit = (data) => {
+    //   console.log(data);
+    // }
+  
+  
+    const [fullname, setfullname] = useState("");
+    const [phonenumber, setphonenumber] = useState("");
+    const [email, setemail] = useState("");
+    const [address, setaddress] = useState("");
+    const [city, setcity] = useState("");
+    const [province, setprovince] = useState("");
+    const [zipcode, setzipcode] = useState("");
+    
 
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+    let handleSubmit = (e) => {
+      e.preventDefault();
 
-  const[form, setForm] = useState({})
-  const[errors, setErrors] = useState({})
-  const setField = (field, value) => {
-    setForm({
-      ...form,
-      [field]:value
-    })
+    try {
+        const ShippingDetail = {
+            fullname: fullname,
+            phonenumber: phonenumber,
+            email: email,
+            address: address,
+            city: city,
+            province: province,
+            zipcode: zipcode
+        };
 
-    if(!!errors[field])
-    setErrors({
-      ...errors,
-      [field]:null
-    })
-  }
 
-  const validateForm = ()=>{
-    const{name, phone, email, address, city, province, zip} = form
-    const newErrors ={}
-
-    if(!name || name == "") newErrors.name = "Please enter the full name"
-    if(!phone || phone == "") newErrors.phone = "Please enter the phone number"
-      else if (phone.length > 10 || phone.length < 10)newErrors.phone = "Enter valid phone number"
-    if(!name || email == "") newErrors.email = "Please enter the full name"
-    //  else if (email.type(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))newErrors.email = "Enter valid email"
-    if(!address || address == "") newErrors.address = "Please enter the street address"
-    if(!city || city == "") newErrors.city = "Please enter the city"
-    if(!province || province == "") newErrors.province = "Please enter the province"
-    if(!zip || zip == "") newErrors.zip = "Please enter the zip code"
-      else if (zip.length > 5 || zip.length < 5)newErrors.zip = "Enter valid zip code"
-    return newErrors
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault()
-
-    const formErrors = validateForm()
-    if(Object.keys(formErrors).length > 0){
-      setErrors(formErrors)
-    }else{
-      console.log(Object);
-      console.log(form);
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/createShipping',
+            data: ShippingDetail
+        })
+            .then(res => {
+                console.log('result', res);
+                console.log('data', res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
+    catch (err) {
+        console.log(err);
+    }
+};
 
-    console.log(form)
-  }
-  if (isEmpty) return <h1 >Your Cart is Empty</h1>
   return (
     <>
       <AgriMartNavBar/>
@@ -88,87 +143,42 @@ const AgriMartCheckout =() =>{
                 <div className='card-body'>
 
                   <div className='row'>
-                  <Form>
+
+                  <Form onSubmit={handleSubmit}>
+
                   <div className='col-md-4'>
                     <Form.Group controlId="name">
                       <Form.Label><PersonIcon/>Full Name</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.name}
-                        onChange={(e) => setField("name", e.target.value)}
-                        isInvalid={!!errors.name}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
-                          {errors.name}
-                        </Form.Control.Feedback>
+                      <Form.Control required type="text" value={fullname} onChange={(e) => setfullname(e.target.value)} {...register("name", {required: "Name is Required"})}/>
                     </Form.Group>
                     </div>
-
                     <div className='col-md-4'>
-                    <Form.Group controlId="phone">
+                    <Form.Group controlId="name">
                       <Form.Label><CallIcon/>Phone Number</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.phone}
-                        onChange={(e) => setField("phone", e.target.value)}
-                        isInvalid={!!errors.phone}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
-                          {errors.phone}
-                        </Form.Control.Feedback>
+                      <Form.Control required type="text" value={phonenumber} onChange={(e) => setphonenumber(e.target.value)} placeholder="123-4567-891" />
+                      <small className='text-danger'>Phone Number is Required</small>
                     </Form.Group>
                     </div>
-
-                    {/* <Form.Group controlId="name">
-                      <Form.Label><PersonIcon/>Full Name</Form.Label>
-                        <Form.Control
-                        type="text">
-                        </Form.Control>
-                    </Form.Group> */}
-
                     <div className='col-md-4'>
-                    <Form.Group controlId="email">
-                      <Form.Label><EmailIcon/>Email Address (optional)</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.email}
-                        onChange={(e) => setField("email", e.target.value)}
-                        isInvalid={!!errors.email}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
-                          {errors.email}
-                        </Form.Control.Feedback>
+                    <Form.Group controlId="name">
+                      <Form.Label><EmailIcon/>Email</Form.Label>
+                      <Form.Control required type="text" value={email} onChange={(e) => setemail(e.target.value)} placeholder="abcdef@gmail.com" />
                     </Form.Group>
                     </div>
-
                     <div className='col-md-4'>
-                    <Form.Group controlId="address">
-                      <Form.Label><HomeIcon/>Full Address</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.address}
-                        onChange={(e) => setField("address", e.target.value)}
-                        isInvalid={!!errors.address}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
-                          {errors.address}
-                        </Form.Control.Feedback>
+                    <Form.Group controlId="name">
+                      <Form.Label><HomeIcon/>Address</Form.Label>
+                      <Form.Control required type="text" value={address} onChange={(e) => setaddress(e.target.value)} placeholder="Street, house/apartment/unit*"/>
                     </Form.Group>
                     </div>
-                    
                     <div className='row'>
                     <div className='col'>
                     <Form.Group controlId="city">
                       <Form.Label>City</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.city}
-                        onChange={(e) => setField("city", e.target.value)}
-                        isInvalid={!!errors.city}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
+                      <Form.Control required type="text" value={city} onChange={(e) => setcity(e.target.value)} />
+                        {/* <Form.Control.Feedback type='invalid'>
                           {errors.city}
-                        </Form.Control.Feedback>
+                        </Form.Control.Feedback> */}
                     </Form.Group>
                     </div>
                     
@@ -176,43 +186,37 @@ const AgriMartCheckout =() =>{
                     <div className='col'>
                     <Form.Group controlId="province">
                       <Form.Label>Province</Form.Label>
-                        <Form.Control
-                        type="text"
-                        value = {form.province}
-                        onChange={(e) => setField("province", e.target.value)}
-                        isInvalid={!!errors.province}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
+                      <Form.Control required type="text" value={province} onChange={(e) => setprovince(e.target.value)} />
+                        {/* <Form.Control.Feedback type='invalid'>
                           {errors.province}
-                        </Form.Control.Feedback>
+                        </Form.Control.Feedback> */}
                     </Form.Group>
                     </div>
                     
                     <div className='col'>
                     <Form.Group controlId="zip">
                       <Form.Label>Zip Code</Form.Label>
-                        <Form.Control
-                        type="zip"
-                        value = {form.zip}
-                        onChange={(e) => setField("zip", e.target.value)}
-                        isInvalid={!!errors.zip}>
-                        </Form.Control>
-                        <Form.Control.Feedback type='invalid'>
+                      <Form.Control required type="text" value={zipcode} onChange={(e) => setzipcode(e.target.value)}  />
+                        {/* <Form.Control.Feedback type='invalid'>
                           {errors.zip}
-                        </Form.Control.Feedback>
+                        </Form.Control.Feedback> */}
                     </Form.Group>
-                    </div></div>
+                    </div></div>    
 
                     <Form.Group controlId="submit-btn">
                     <Row>
                     <Col>
                     <Link to="/ToCart"><button color='red' type='button' className='btn btn-primary'>Back to Cart</button></Link></Col>
-                    <Col><Link to="/ToPayment"><Button type='submit' onClick={handleSubmit} className="my-2" varient="primary">Pay</Button></Link></Col>
+                    <Col>
+                    {/* <Link to="/ToPayment"> */}
+                    <Col><Link to="/ToPayment"><Button type='submit' onClick={handleSubmit} className="my-2 btn-danger" varient="danger">Proceed to Pay</Button></Link></Col>
+                     
+                      {/* </Link> */}
+                      </Col>
                     </Row> 
-                    </Form.Group>
-                    
-                    
+                    </Form.Group> 
                    </Form>
+                      
                   </div>
                 </div>
               </div>

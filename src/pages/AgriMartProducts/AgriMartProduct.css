@@ -1,3 +1,11 @@
 .interface{
     background-color: rgb(202, 202, 202);
 };
+
+.product-col-1{
+    width: 80%;
+}
+
+.product-col-2{
+    width: 20%;
+}
