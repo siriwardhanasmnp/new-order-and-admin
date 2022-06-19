@@ -24,6 +24,10 @@ import { inputAdornmentClasses } from '@mui/material';
 
 const AgriMartCheckout =() =>{
   
+
+
+
+  
   //validation
   const{
     register,
@@ -33,11 +37,20 @@ const AgriMartCheckout =() =>{
   const onSubmit = (data) => {
     console.log(data);
   };
+
+ 
+
+    // console.log(form)
     const { 
       isEmpty,
       items,
       cartTotal,
     } = useCart();
+  
+    // const onSubmit = (data) => {
+    //   console.log(data);
+    // }
+  
   
     const [fullname, setfullname] = useState("");
     const [phonenumber, setphonenumber] = useState("");
@@ -51,6 +64,7 @@ const AgriMartCheckout =() =>{
     let handleSubmit = (e) => {
       e.preventDefault();
 
+
     try {
         const ShippingDetail = {
             fullname: fullname,
@@ -61,6 +75,8 @@ const AgriMartCheckout =() =>{
             province: province,
             zipcode: zipcode
         };
+
+
         axios({
             method: 'post',
             url: 'http://localhost:8080/createShipping',
@@ -78,6 +94,11 @@ const AgriMartCheckout =() =>{
         console.log(err);
     }
 };
+
+//Validation
+
+
+console.log("re-rendered")
 
   return (
     <>
@@ -98,7 +119,9 @@ const AgriMartCheckout =() =>{
                   <div className='col-md-4'>
                     <Form.Group controlId="name">
                       <Form.Label><PersonIcon/>Full Name</Form.Label>
-                      <Form.Control required type="text" name="fullName" value={fullname} onChange={(e) => setfullname(e.target.value)} {...register("name", {required: "Name is Required"})}/>
+                      <Form.Control required type="text" name="fullName" value={fullname} onChange={(e) => setfullname(e.target.value)} 
+                      pattern= "^[A-Za-z0-9]{3,16}$"
+                      errorMessage="Username should be 3-16 characters and shouldn't include any special character!"/>
                       
                     </Form.Group>
                     </div>
