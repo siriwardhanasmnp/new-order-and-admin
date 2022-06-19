@@ -33,68 +33,11 @@ const AgriMartCheckout =() =>{
   const onSubmit = (data) => {
     console.log(data);
   };
-
-  // console.log(error)
-
-  // const[form, setForm] = useState({})
-  // const[errors, setErrors] = useState({})
-  // const setField = (field, value) => {
-  //   setForm({
-  //     ...form,
-  //     [field]:value
-  //   })
-
-  //   if(!!errors[field])
-  //   setErrors({
-  //     ...errors,
-  //     [field]:null
-  //   })
-  // }
-
-  // const validateForm = ()=>{
-  //   const{name, phone, email, address, city, province, zip} = form
-  //   const newErrors ={}
-
-  //   var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-  //   if(!name || name === "") newErrors.name = "Please enter the full name"
-  //   if(!phone || phone === "") newErrors.phone = "Please enter the phone number"
-  //     else if (phone.length > 10 || phone.length < 10)newErrors.phone = "Enter valid phone number"
-  //   if(email==="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/") newErrors.email = "Please Waradiiiiiiiiiie"
-  //   //  else if (email.type(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))newErrors.email = "Enter valid email"
-  //   if(!address || address === "") newErrors.address = "Please enter the street address"
-  //   if(!city || city === "") newErrors.city = "Please enter the city"
-  //   if(!province || province === "") newErrors.province = "Please enter the province"
-  //   if(!zip || zip === "") newErrors.zip = "Please enter the zip code"
-  //     else if (zip.length > 5 || zip.length < 5)newErrors.zip = "Enter valid zip code"
-  //     else if (zip in ['1','2','3','4','9']) newErrors.address = "waradoiiii"
-  //   return newErrors
-  // }
-
- 
-  // if (isEmpty) return <h1 >Your Cart is Empty</h1>
-
-
-
-    // const formErrors = validateForm()
-    // if(Object.keys(formErrors).length > 0){
-    //   setErrors(formErrors)
-    // }else{
-    //   console.log(Object);
-    //   console.log(form);
-    // }
-
-    // console.log(form)
     const { 
       isEmpty,
       items,
       cartTotal,
     } = useCart();
-  
-    // const onSubmit = (data) => {
-    //   console.log(data);
-    // }
-  
   
     const [fullname, setfullname] = useState("");
     const [phonenumber, setphonenumber] = useState("");
@@ -118,8 +61,6 @@ const AgriMartCheckout =() =>{
             province: province,
             zipcode: zipcode
         };
-
-
         axios({
             method: 'post',
             url: 'http://localhost:8080/createShipping',
@@ -157,14 +98,14 @@ const AgriMartCheckout =() =>{
                   <div className='col-md-4'>
                     <Form.Group controlId="name">
                       <Form.Label><PersonIcon/>Full Name</Form.Label>
-                      <Form.Control required type="text" value={fullname} onChange={(e) => setfullname(e.target.value)} {...register("name", {required: "Name is Required"})}/>
-                      {errors.name && (<small className='text-danger'>Phone Number is Required</small>)}
+                      <Form.Control required type="text" name="fullName" value={fullname} onChange={(e) => setfullname(e.target.value)} {...register("name", {required: "Name is Required"})}/>
+                      
                     </Form.Group>
                     </div>
                     <div className='col-md-4'>
-                    <Form.Group controlId="name">
+                    <Form.Group controlId="phone">
                       <Form.Label><CallIcon/>Phone Number</Form.Label>
-                      <Form.Control required type="text" value={phonenumber} onChange={(e) => setphonenumber(e.target.value)} placeholder="123-4567-891" />
+                      <Form.Control required type="text" name="phone" value={phonenumber} onChange={(e) => setphonenumber(e.target.value)} placeholder="123-4567-891" />
                       <small className='text-danger'>Phone Number is Required</small>
                     </Form.Group>
                     </div>
