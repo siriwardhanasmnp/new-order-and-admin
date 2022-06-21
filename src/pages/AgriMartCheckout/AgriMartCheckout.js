@@ -129,10 +129,12 @@ const AgriMartCheckout = () => {
                         <FormItem
                           label="Phone Number"
                           name='Phone Number'
+                          placeholder = "+94"
                           required
                           rules={[
-                            {
-                              required: false,
+                            { 
+                              required: true, 
+                              message: 'Please input your phone number!' 
                             },
                             
                             {
@@ -140,9 +142,10 @@ const AgriMartCheckout = () => {
                               message: "Value should contain numbers",
                             },
                             {
-                              maxLength: 10,
-                              message: "Enter valid Phone Number",
+                              pattern: /^[\d]{0,10}$/,
+                              message: "Enter 10 digits phone number",
                             },
+                          
                           ]}
                           validateTrigger="onBlur"
                         >
@@ -188,7 +191,19 @@ const AgriMartCheckout = () => {
                           </Col>
                           <Col md={8}>
                             <FormItem label="Zip Code" name="zip" required
-                             rules={[...requiredValidation]}>
+                              rules={[
+                                { 
+                                  required: true, 
+                                  message: 'Please input your phone number!' 
+                                },
+                                
+                                {
+                                  pattern: /^[\d]{5}$/,
+                                  message: "Enter 5 digit zip code",
+                                },
+                              
+                              ]}
+                             >
                               <InputNumber className="w-5" />
                             </FormItem>
                           </Col>
