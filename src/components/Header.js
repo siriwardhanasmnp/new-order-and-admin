@@ -46,11 +46,11 @@ const Header = ({ onChange }) => {
         </Navbar.Text>
 
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="success" id="productId">
             Filter by Category
           </Dropdown.Toggle>
 
-          <Dropdown.Menu onChange={(e)=> e.currentTarget}>
+          <Dropdown.Menu onChange={(e)=> setKeyword(e.target.value)}>
             <Dropdown.Item href="#/action-2">Fruits</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Vegetables</Dropdown.Item>
           </Dropdown.Menu>
