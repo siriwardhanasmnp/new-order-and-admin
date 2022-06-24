@@ -29,10 +29,7 @@ export default function AgriMartHome() {
           minHeight: "30px"
         }} variant="outline-secondary">Shop Now</Button></Link>
     </div>
-    
     </div>
-    
-      
     <AgriMartFooter/>
   
     

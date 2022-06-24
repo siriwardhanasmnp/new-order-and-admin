@@ -12,6 +12,7 @@ import {
   Row,
   Col,
   Input,
+  message,
   InputNumber,
   Select,
   Modal,
@@ -49,7 +50,27 @@ const { Meta } = Card;
 //---------Model
 const [visible, setVisible] = useState(false);
 
+//---------- Validation
+const requiredValidation = [{ required: true, message: "Required" }];
 
+//----------Succsess Message
+const key = 'updatable';
+
+const success = () => {
+  message.loading({ content: 'Loarding',
+  className: 'custom-class',
+  style: {
+    marginTop: '20vh',
+  }, 
+});
+  setTimeout(() => {
+    message.success({ content: 'Success',
+    className: 'custom-class',
+    style: {
+      marginTop: '20vh',
+    }, });
+  }, 3600);
+};
 
 
 
@@ -106,8 +127,6 @@ const [visible, setVisible] = useState(false);
   };
 
 
-  const requiredValidation = [{ required: true, message: "This Field is Required" }];
-
   return (
     <div>
        <div>
@@ -126,12 +145,12 @@ const [visible, setVisible] = useState(false);
                   }}
                   size="small" title="My Details" extra={<a href="#"><ModeEditIcon className="editIcon" onClick={() => setVisible(true)}></ModeEditIcon></a>}>
                     <Modal
-                      title="Modal 1000px width"
+                      // title="Modal 900px width"
                       centered
                       visible={visible}
                       onOk={() => setVisible(false)}
                       onCancel={() => setVisible(false)}
-                      width={1000}
+                      width={700}
                       >
                 <div>
                   <div class="form-style">
@@ -164,31 +183,77 @@ const [visible, setVisible] = useState(false);
                       <Input maxLength={50}/>
                     </FormItem>
 
-                    <FormItem
-                      label="Password"
-                      name="password"
-                      required
-                      rules={requiredValidation}
-                    >
-                      <Input maxLength={50}/>
-                    </FormItem>
+                    <Row gutter={8}>
+                         
+
+                    <Col md={8}>
+                            <FormItem label="New Password" name="newPassword" 
+                             rules={[{ required: true, message: 'Please add a password' },
+                             { min: 8, message: 'Password must have a minimum length of 8' },
+                             {
+                                 pattern: new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'),
+                                 message: 'Password must contain at least one lowercase letter, uppercase letter, number, and special character'
+                             }]}
+                             >
+                              <Input type="password" size="large" placeholder="********" />
+                            </FormItem>
+                          </Col>
+
+                          <Col md={8}>
+                            <FormItem label="Confirm Password" name="confirmPassword" 
+                             rules={[{ required: true, message: 'Please verify your password' },
+                             {
+                              pattern: new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'),
+                              message: 'Please verify your password'
+                          }
+                        ]}
+                             >
+                              <Input type="password" size="large" placeholder="********" />
+                            </FormItem>
+                          </Col>
+                        </Row>
 
                     <FormItem
-                      label="Email"
-                      name="description"
+                        label="E mail"
+                      name="email"
                       required
                       rules={requiredValidation}
                     >
-                      <Input maxLength={50}/>
+                       <Input type="email" />
                     </FormItem>
 
+                   
                     <FormItem
-                      label="Phone Number"
-                      name="phoneNumber"
+                          label="Phone Number"
+                          name='Phone Number'
+                          placeholder = "+94"
+                          required
+                          rules={[
+                            { 
+                              required: true, 
+                              message: 'Please input your phone number!' 
+                            },   
+                            {
+                              pattern: /^(?:\d*)$/,
+                              message: "Value should contain numbers",
+                            },
+                            {
+                              pattern: /^[\d]{9,10}$/,
+                              message: "Enter 10 digits phone number",
+                            },
+                          
+                          ]}
+                          validateTrigger="onBlur"
+                        >
+                          <InputNumber className="w-100" />
+                        </FormItem>
+                        <FormItem
+                        label="E mail"
+                      name="email"
                       required
                       rules={requiredValidation}
                     >
-                      <Input maxLength={50}/>
+                       <Button onClick={success}> Update</Button>
                     </FormItem>
                   </Form>
                 </div>  

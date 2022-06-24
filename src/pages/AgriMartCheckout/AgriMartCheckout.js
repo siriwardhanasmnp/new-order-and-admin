@@ -132,7 +132,6 @@ const [cartDetails, setCartDetails] = useState([]);
                         <FormItem
                           label="Phone Number"
                           name='Phone Number'
-                          placeholder = "+94"
                           required
                           rules={[
                             { 
@@ -144,7 +143,7 @@ const [cartDetails, setCartDetails] = useState([]);
                               message: "Value should contain numbers",
                             },
                             {
-                              pattern: /^[\d]{0,10}$/,
+                              pattern: /^[\d]{9,10}$/,
                               message: "Enter 10 digits phone number",
                             },
                           
@@ -157,15 +156,6 @@ const [cartDetails, setCartDetails] = useState([]);
                         <FormItem
                           label="E mail (Optional)"
                           name="email"
-                          
-                          // rules={[
-                            
-                          //   {
-                          //     maxLength: 10,
-                          //     message: "Value should be less than 10 character",
-                          //   },
-                          // ]}
-
                         >
                           <Input type="email" />
                         </FormItem>
