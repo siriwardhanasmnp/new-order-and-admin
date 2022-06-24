@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import { useState } from "react";
 import axios from "axios";
 // import { Input } from 'react-input-component';
 
@@ -39,11 +38,6 @@ const AgriMartCheckout = () => {
 
   // console.log(form)
   const { isEmpty, items, cartTotal } = useCart();
-
-  // const onSubmit = (data) => {
-  //   console.log(data);
-  // }
-
   const [fullname, setfullname] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [email, setemail] = useState("");
@@ -56,8 +50,6 @@ const AgriMartCheckout = () => {
 
     console.log(e);
 
-    return;
-
     try {
       const ShippingDetail = {
         fullname: fullname,
@@ -68,7 +60,7 @@ const AgriMartCheckout = () => {
         province: province,
         zipcode: zipcode,
       };
-
+console.log();
       axios({
         method: "post",
         url: "http://localhost:8080/createShipping",
@@ -86,7 +78,22 @@ const AgriMartCheckout = () => {
     }
   };
 
-  //Validation
+
+//Col2 Table
+const [cartDetails, setCartDetails] = useState([]);
+  useEffect(()=>{
+    axios.get("http://localhost:8080/receiveToCart")
+    .then(res => {
+      console.log(res.data);
+      setCartDetails(res.data)
+  })
+  .catch(err=>{
+    console.error(err)
+  })
+  },[])
+
+
+  
 
   console.log("re-rendered");
 
@@ -102,8 +109,6 @@ const AgriMartCheckout = () => {
               </div>
               <div className="card-body">
                 <div className="row">
-          
-          
                   <div>
                     <h2 class="txt-header">Add Shipping Details</h2>
                     <div class="form-style">
@@ -119,13 +124,11 @@ const AgriMartCheckout = () => {
                         <FormItem
                           label="Full Name"
                           name="fullName"
-                          required
-                          
+                          required     
                           rules={[...requiredValidation]}
                         >
                           <Input />
                         </FormItem>
-
                         <FormItem
                           label="Phone Number"
                           name='Phone Number'
@@ -135,8 +138,7 @@ const AgriMartCheckout = () => {
                             { 
                               required: true, 
                               message: 'Please input your phone number!' 
-                            },
-                            
+                            },   
                             {
                               pattern: /^(?:\d*)$/,
                               message: "Value should contain numbers",
@@ -177,24 +179,64 @@ const AgriMartCheckout = () => {
                           <TextArea className="w-100" />
                         </FormItem>
                         <Row gutter={8}>
+                         
+
                           <Col md={8}>
-                            <FormItem label="City" name="city" required
-                             rules={[...requiredValidation]}>
+                            <FormItem label="Province" name="province" 
+                            // rules={[
+                            //   { 
+                            //     required: true, 
+                            //     message: 'Please input your Province' 
+                            //   },
+                              
+                            //   {
+                            //     pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
+                            //     message: "field does not accept numbers"
+                            //   },
+                            
+                            // ]}
+                            rules={requiredValidation}
+                            >
+                              <Select className="w-100">
+                                  <option value={"Central"}>Central</option>
+                                  <option value={"Eastern"}>Eastern</option>
+                                  <option value={"Northern"}>Northern</option>
+                                  <option value={"Trincomalee"}>North Central</option>
+                                  <option value={"North Western"}>North Western</option>
+                                  <option value={"Sabaragamuwa"}>Sabaragamuwa</option>
+                                  <option value={"Southern"}>Southern</option>
+                                  <option value={"Uva"}>Uva</option>
+                                  <option value={"Western"}>Western</option>
+                                </Select>
+                            
+                            </FormItem>
+                          </Col>
+
+                          <Col md={8}>
+                            <FormItem label="City" name="city" 
+                            rules={[
+                              { 
+                                required: true, 
+                                message: 'Please input your City!' 
+                              },
+                              
+                              {
+                                pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
+                                message: "field does not accept numbers"
+                              },
+                            
+                            ]}
+                             >
                               <TextArea className="w-100" />
                             </FormItem>
                           </Col>
-                          <Col md={8}>
-                            <FormItem label="Province" name="province" required
-                             rules={[...requiredValidation]}>
-                              <TextArea className="w-100" />
-                            </FormItem>
-                          </Col>
+
                           <Col md={8}>
                             <FormItem label="Zip Code" name="zip" required
                               rules={[
                                 { 
                                   required: true, 
-                                  message: 'Please input your phone number!' 
+                                  message: 'Please input zip code!' 
                                 },
                                 
                                 {

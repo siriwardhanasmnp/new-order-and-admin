@@ -4,7 +4,7 @@ import Itemcard from "../../components/AgriMartCartComponents/Itemcard";
 import data from "../../components/data";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
+import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
 // import AgriMartFilterSideBar from '../../components/AgriMartFilterSideBar/AgriMartFilterSideBar';
 import { Card, Row, Col, Container } from "react-bootstrap";
 import "./AgriMartProduct.css";
@@ -34,21 +34,10 @@ const Productpg = () => {
 
   return (
     <>
-      <div>
-        <AgriMartNavBar />
-      </div>
-  
-      <div>
-        {/* <section className="py-4 container"> */}
         <div>
           <Header onChange={setSearchOption} />
         </div>
-        <Row>
-          <Col sm={1}>
-           
-          </Col>
-          {/* <AgriMartFilterSideBar/> */}
-          <Col sm={10}>
+        <div className="product-row">
             <div className="row justify-content-center">
               {posts.map((item, index) => {
                 return (
@@ -56,6 +45,7 @@ const Productpg = () => {
                     img={item.img}
                     title={item.productTitle}
                     description={item.description}
+                    quantity={item.quantity}
                     price={item.price}
                     item={item}
                     key={item.productId}
@@ -63,10 +53,8 @@ const Productpg = () => {
                 );
               })}
             </div>
-          </Col>
-        </Row>
-        {/* </section>  */}
-      </div>
+            </div>
+            <AgriMartFooter/>
     </>
   );
 };

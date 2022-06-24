@@ -64,8 +64,8 @@ const Cart =() =>{
                         <th>Product</th>
                         <th>Title</th>
                         <th>Price</th>
-                        {/* <th>Quantity</th>
-                        <th>Action</th> */}
+                        <th>Quantity</th>
+                        <th>Action</th>
                         <th></th>    
                       </tr>
                     </thead>                 
@@ -79,15 +79,15 @@ const Cart =() =>{
                       <td>{item.product.productTitle}</td>
                       <td>Rs. {item.totalPrice}</td>
                       <td>   
-                      {/* <div className='addbtn'><RemoveIcon  onClick={()=> updateItemQuantity(item.id, item.quantity - 1) } style={{height:'1rem', width:'1rem'}}/>
+                      <div className='addbtn'><RemoveIcon  onClick={()=> updateItemQuantity(item.id, item.quantity - 1) } style={{height:'1rem', width:'1rem'}}/>
                       {item.quantity}
-                      <AddIcon onClick={()=> updateItemQuantity(item.id, cartDetails.item + 1)} style={{height:'1rem', width:'1rem'}}/></div> */}
+                      <AddIcon onClick={()=> updateItemQuantity(item.id, cartDetails.item + 1)} style={{height:'1rem', width:'1rem'}}/></div>
                       </td>
-                      {/* <td>
+                      <td>
                       <button className='btn ms-2' onClick={() => removeItem(item.id)}>
                         <DeleteIcon/>
                         </button>
-                      </td> */}
+                      </td>
                       </tr>
                     </>
                     )

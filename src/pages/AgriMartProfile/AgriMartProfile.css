@@ -1,0 +1,17 @@
+.row{
+  padding-top: 10em;
+}
+
+
+.editIcon:hover {
+    transform: scale(1.2); 
+    transition: transform .1700s;
+  }
+
+  .col-md-5{
+    background-color: rgb(205, 205, 205);
+  }
+
+.py-9{
+  padding-top: 10em;
+}
