@@ -37,7 +37,17 @@ function AgriMartNavBar() {
                             <Link to="/signUp">
                             <Badge pill bg="success">
                             Sign Up 
-                        </Badge>
+                                </Badge>
+                            </Link>
+
+                        </div>
+                    </Nav>
+                    <Nav>
+                        <div class="profile-style">
+                            <Link to="/CustomerProfile">
+                            <Badge pill bg="success">
+                            User Name 
+                                </Badge>
                             </Link>
 
                         </div>
