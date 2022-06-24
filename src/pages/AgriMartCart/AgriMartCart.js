@@ -95,7 +95,7 @@ const Cart =() =>{
                     </tbody>
                     </table>
                   </div>
-                {/* <div className='col-auto ms-auto'><h4>Cart Total Price: Rs {cartTotal}</h4></div> */}
+             
                 <div className='row'>
                   <div className='col-auto'><Link to="/ToProducts"><button className='btn btn-primary m-2'  >Shop More</button></Link></div>
                   <div className='col-auto'> <button className='btn btn-danger m-2' onClick={() => emptyCart()}>Clear Cart</button></div>   
