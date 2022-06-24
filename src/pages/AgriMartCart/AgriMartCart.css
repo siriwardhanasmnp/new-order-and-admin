@@ -1,4 +1,4 @@
-.row{
+/* .row{
     background-size: auto;
 }
 
@@ -66,7 +66,17 @@
 
 .py-4{
     background-color: rgb(251, 249, 249);
+} */
+
+.cartRow{
+    padding-top: 10em;
+    padding-left: 5em;
 }
 
+.cartCol2{
+    padding-left: 10em;
+}
 
-
+.deleteicon{
+    color: rgb(194, 7, 7);
+}
