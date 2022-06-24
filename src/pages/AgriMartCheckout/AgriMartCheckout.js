@@ -8,7 +8,7 @@ import "./AgriMartCheckout.css";
 import "./AgriMartCheckout.css";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
-import { Button, Col, Form, Input, InputNumber, Row, Select, Space } from "antd";
+import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 
@@ -21,7 +21,24 @@ import { inputAdornmentClasses } from "@mui/material";
 const AgriMartCheckout = () => {
   const requiredValidation = [{ required: true, message: "Required" }];
 
-  //Validation----------------------------------------
+  //-------------Success Message
+  const key = 'updatable';
+
+const success = () => {
+  message.loading({ content: 'Loarding',
+  className: 'custom-class',
+  style: {
+    marginTop: '20vh',
+  }, 
+});
+  setTimeout(() => {
+    message.success({ content: 'Success',
+    className: 'custom-class',
+    style: {
+      marginTop: '20vh',
+    }, });
+  }, 3600);
+};
 
   //-------------------------------------------
 
@@ -114,6 +131,7 @@ const [cartDetails, setCartDetails] = useState([]);
                     <div class="form-style">
                       <Form
                         onFinish={handleSubmit}
+                        onClick={success}
                         layout="vertical"
                         labelCol={{ flex: "110px" }}
                         labelAlign="left"
@@ -254,6 +272,7 @@ const [cartDetails, setCartDetails] = useState([]);
                                     htmlType="submit"
                                     className="my-2 btn-danger"
                                     varient="danger"
+                                    
                                   >
                                     Save
                                   </Button>
@@ -287,20 +306,15 @@ const [cartDetails, setCartDetails] = useState([]);
                               </Link>
                           </Col>
                         </Row>
-
                         <Space>
-                          
                         </Space>
                       </Form>
                     </div>
                   </div>
-         
-         
                 </div>
               </div>
             </div>
           </div>
-
           <div className="col-md-5">
             <table className="table table-bordered">
               <thead>
