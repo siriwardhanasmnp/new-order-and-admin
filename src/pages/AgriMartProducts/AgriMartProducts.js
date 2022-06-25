@@ -4,6 +4,7 @@ import Itemcard from "../../components/AgriMartCartComponents/Itemcard";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
+
 import { Card, Row, Col, Container } from "react-bootstrap";
 import "./AgriMartProduct.css";
 

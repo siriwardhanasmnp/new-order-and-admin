@@ -7,6 +7,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
+import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
+
 import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
 import { Form } from 'react-bootstrap';
 import axios from "axios";
@@ -122,8 +124,11 @@ const Cart =() =>{
               </div>    
 
       </Col>
+     
     </Row>
-   
+    <div>
+        <AgriMartFooter/>
+      </div>
 </> 
   ); 
 }

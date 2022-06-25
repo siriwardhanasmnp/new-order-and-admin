@@ -4,6 +4,7 @@ import { useCart } from "react-use-cart";
 import axios from "axios";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
+import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
@@ -337,6 +338,9 @@ const [cartDetails, setCartDetails] = useState([]);
           </Row>
          
       
+      </div>
+      <div>
+        <AgriMartFooter/>
       </div>
     </>
   );
