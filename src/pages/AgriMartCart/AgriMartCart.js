@@ -7,18 +7,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
-import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card } from "antd";
+import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
 import { Form } from 'react-bootstrap';
-import { message, Popconfirm } from 'antd';
-import React from 'react';
 import axios from "axios";
 
 
 //----------------Corfirm Cart Item Deletion
-// const confirm = (e: React.MouseEvent<HTMLElement>) => {
-//   console.log(e);
-//   message.success('Click on Yes');
-// };
+
 
 
 
@@ -119,7 +114,7 @@ const Cart =() =>{
                     </table>
                     <div className='col-md-6'>
                     <div className='from-group mb-3'>
-                    <div> <Link to="/ToCheckout"><button className='btn btn-primary m-2'  Link to="/Checkout">Checkout</button></Link></div> 
+                    <div> <Link to="/ToCheckout"><Button type="primary" className='btn btn-primary m-2'  Link to="/Checkout">Checkout</Button></Link></div> 
                     </div>
                     
                     </div>
