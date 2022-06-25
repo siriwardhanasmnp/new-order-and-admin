@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Popconfirm } from 'antd';
 import axios from "axios";
-import { useCart } from "react-use-cart";
+// import { useCart } from "react-use-cart";
 import ReactStars from "react-rating-stars-component";
 import {Tooltip, } from 'antd';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -14,7 +14,7 @@ const ratingChanged = (newRating) => {
 };
 
 export const Itemcard = (props) => {
-  const { addItem } = useCart();
+  // const { addItem } = useCart();
   //api call
   const addToCart = (item) => {
     console.log(item);

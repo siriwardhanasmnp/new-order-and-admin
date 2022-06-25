@@ -51,7 +51,7 @@ const success = () => {
   };
 
   // console.log(form)
-  const { isEmpty, items, cartTotal } = useCart();
+  // const { isEmpty, items, cartTotal } = useCart();
   const [fullname, setfullname] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [email, setemail] = useState("");
@@ -139,7 +139,8 @@ const success = () => {
 
 
 //Col2 Table
-const [cartDetails, setCartDetails] = useState([]);
+  const [cartDetails, setCartDetails] = useState([]);
+
   useEffect(()=>{
     axios.get("http://localhost:8080/receiveToCart")
     .then(res => {
@@ -374,29 +375,29 @@ const [cartDetails, setCartDetails] = useState([]);
                 </tr>
               </thead>
               <tbody>
-                {items.map((item, index) => {
+              
                   return (
                     <>
-                      <tr key={index}>
+                      <tr>
                         <td>
                           <img
-                            src={item.img}
+                            src=''
                             style={{ height: "2rem", width: "2rem" }}
                           />
                         </td>
-                        <td>Rs. {item.price}</td>
-                        <td>{item.quantity}</td>
-                        <td>Rs. {item.price * item.quantity}</td>
+                        <td>Rs. 33</td>
+                        <td>33</td>
+                        <td>Rs. 33</td>
                       </tr>
                     </>
                   );
-                })}
+             
                 <tr>
                   <td colSpan="2" className="text-left">
                     <b>Grand Total</b>
                   </td>
                   <td colSpan="2" className="text-end">
-                    Rs. {cartTotal}
+                    Rs.6666
                   </td>
                 </tr>
               </tbody>
@@ -409,6 +410,7 @@ const [cartDetails, setCartDetails] = useState([]);
       </div>
       </div>
   );
-};
+}
+
 
 export default AgriMartCheckout;

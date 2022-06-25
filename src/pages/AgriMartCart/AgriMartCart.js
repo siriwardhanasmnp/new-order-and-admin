@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
-// import { useCart } from 'react-use-cart';
+import { useCart } from 'react-use-cart';
 import "./AgriMartCart.css";
 // import '@shapla/react-delete-icon/dist/delete-icon.css';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -80,7 +80,7 @@ const Cart =() =>{
                             style={{
                               color: 'red',
                             }}
-                            onOk={() => removeItem(item.id)}
+                            // onOk={() => removeItem(item.id)}
                           />
                         }
                       ><button className='btn ms-2' >
@@ -99,7 +99,9 @@ const Cart =() =>{
                   <Row className='cartButtons'>
                   <Col className='cartShopmoreBtn'><Link to="/ToProducts"><Button type='primary' >Shop More</Button></Link></Col>
                     <Col> <Popconfirm title="Are you sure？" icon={<QuestionCircleOutlined style={{ color: 'red' }} />}>
-                            <Button type='danger' onClick={() => emptyCart()}>Clear Cart</Button>
+                            <Button type='danger' 
+                            // onClick={() => emptyCart()}
+                            >Clear Cart</Button>
                           </Popconfirm>
                     </Col>   
                   </Row>

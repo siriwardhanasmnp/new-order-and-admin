@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 const Header = ({ onChange }) => {
   //find assets by category
 
-  // const [keyword, setKeyword] = useState("");
-  // const [category, setCategory] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [category, setCategory] = useState("");
   // const { totalUniqueItems } = useCart();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Header = ({ onChange }) => {
               <Dropdown.Toggle variant="success">
                 <FaShoppingCart color="white" fontSize="25px" />
                 <span className="e-badge e-badge-secondary e-badge-notification e-badge-overlap leftTop">
-                  ({totalUniqueItems})
+                  77
                 </span>
               </Dropdown.Toggle>{" "}
             </Link>
