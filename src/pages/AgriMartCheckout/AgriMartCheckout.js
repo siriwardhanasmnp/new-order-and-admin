@@ -4,7 +4,6 @@ import { useCart } from "react-use-cart";
 import axios from "axios";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
-import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
@@ -120,9 +119,9 @@ const [cartDetails, setCartDetails] = useState([]);
       <Card>
                     <h4 class="txt-header">Add Shipping Details</h4>
                     <div class="form-style">
-                      <Form
+                    <Form
                         onFinish={handleSubmit}
-                        onClick={success}
+                        // onClick={success}
                         layout="vertical"
                         labelCol={{ flex: "110px" }}
                         labelAlign="left"
@@ -130,17 +129,26 @@ const [cartDetails, setCartDetails] = useState([]);
                         form={form}
                         wrapperCol={{ flex: 1 }}
                       >
-                        <FormItem
-                          label="Full Name"
-                          name="fullName"
-                          required     
-                          rules={[...requiredValidation]}
-                        ><PersonIcon/>
-                          <Input />
-                        </FormItem>
-                        <FormItem
+                          <FormItem label="Full Name" name="name" 
+                            rules={[
+                              { 
+                                required: true, 
+                                message: 'Please input your Full Name!' 
+                              },
+                              
+                              {
+                                pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
+                                message: "field does not accept numbers"
+                              },
+                            
+                            ]}
+                             >
+                              <TextArea className="w-100" />
+                            </FormItem>
+                            <FormItem
                           label="Phone Number"
                           name='Phone Number'
+                          placeholder = "+94"
                           required
                           rules={[
                             { 
@@ -159,30 +167,35 @@ const [cartDetails, setCartDetails] = useState([]);
                           ]}
                           validateTrigger="onBlur"
                         >
-                          <CallIcon/>
                           <InputNumber className="w-100" />
                         </FormItem>
 
-                        <FormItem
-                          label="E mail (Optional)"
-                          name="email"
-                        >
-                          <EmailIcon/>
-                          <Input type="email" />
-                        </FormItem>
+                          <FormItem
+                            label="E mail (Optional)"
+                            name="email"
+                          >
+                            <EmailIcon/>
+                            <Input type="email" />
+                          </FormItem>
 
-                        <FormItem
-                          label="Address"
-                          name="address"
-                          required
-                          rules={requiredValidation}
-                        >
-                          <HomeIcon/>
-                          <TextArea className="w-100" />
-                        </FormItem>
+                          <FormItem label="Address" name="address" 
+                            rules={[
+                              { 
+                                required: true, 
+                                message: 'Please input your Address!' 
+                              },
+                              
+                              // {
+                              //   pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
+                              //   message: "field does not accept numbers"
+                              // },
+                            
+                            ]}
+                             >
+                              <TextArea className="w-100" />
+                            </FormItem>
+
                         <Row gutter={8}>
-                         
-
                           <Col md={8}>
                             <FormItem label="Province" name="province"
                             rules={requiredValidation}
@@ -309,14 +322,12 @@ const [cartDetails, setCartDetails] = useState([]);
                   return (
                     <>
                       <tr key={index}>
-                        {/* <input type="checkbox" value="Select" name="Select" />  */}
                         <td>
                           <img
                             src={item.img}
                             style={{ height: "2rem", width: "2rem" }}
                           />
                         </td>
-                        {/* <td>{item.title}</td> */}
                         <td>Rs. {item.price}</td>
                         <td>{item.quantity}</td>
                         <td>Rs. {item.price * item.quantity}</td>
@@ -338,9 +349,6 @@ const [cartDetails, setCartDetails] = useState([]);
           </Row>
          
       
-      </div>
-      <div>
-        <AgriMartFooter/>
       </div>
     </>
   );
