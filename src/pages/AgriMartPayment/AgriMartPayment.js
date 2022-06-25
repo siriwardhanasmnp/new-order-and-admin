@@ -3,6 +3,7 @@ import {Card,Table} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import FormItem from "antd/lib/form/FormItem";
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
+import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import './AgriMartPayment.css';
 import { Nav, Row, Col, Label, NavItem} from 'react-bootstrap';
 import viber from '../../resources/images/viber.png'
@@ -197,6 +198,9 @@ return (
               </div></Col>
           </Row>
           </>
+          <div>
+        <AgriMartFooter/>
+      </div>
         </div>
   );
 }

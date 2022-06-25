@@ -1,7 +1,7 @@
 import React from "react";
 import './AgriMartProfile.css';
 import AgriMartProfileNavBar from "../../components/AgriMartProfileNavBar/AgriMartProfileNavBar";
-// import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
+import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
@@ -344,6 +344,9 @@ const success = () => {
           </div>
           
         </div>
+      </div>
+      <div>
+        <AgriMartFooter/>
       </div>
     </div>
   );

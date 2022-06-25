@@ -9,3 +9,11 @@
     margin-left: 5em;
     border-right: 1em;
 }
+
+.cart{
+    background-color: rgb(240, 240, 240);
+}
+
+.checkCard{
+    border-radius: 1em;
+}
