@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
 import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
-
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
 import { Form } from 'react-bootstrap';
 import axios from "axios";
@@ -79,9 +79,20 @@ const Cart =() =>{
                       <AddIcon onClick={()=> updateItemQuantity(item.id, cartDetails.item + 1)} style={{height:'1rem', width:'1rem'}}/></div>
                       </td>
                       <td>
-                      <button className='btn ms-2' onClick={() => removeItem(item.id)}>
-                        <DeleteIcon className='deleteicon'/>
-                        </button>
+                      <Popconfirm
+                        title="Are you sure？"
+                        icon={
+                          <QuestionCircleOutlined
+                            style={{
+                              color: 'red',
+                            }}
+                            onOk={() => removeItem(item.id)}
+                          />
+                        }
+                      ><button className='btn ms-2' >
+                                            <DeleteIcon className='deleteicon'/>
+                                            </button>
+                      </Popconfirm>
                       </td>
                       </tr>
                     </>

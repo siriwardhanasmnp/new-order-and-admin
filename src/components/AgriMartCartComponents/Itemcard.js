@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import { Popconfirm } from 'antd';
 import axios from "axios";
 import { useCart } from "react-use-cart";
 import ReactStars from "react-rating-stars-component";
@@ -46,12 +48,11 @@ export const Itemcard = (props) => {
             <h7 class="card-title">Quantity {props.quantity}</h7>
             {/* <p class="card-text-bottom">{props.category}</p> */}
            
-            <button
-              
+            <button  
               class="btn btn-success d-flex "
               onClick={() => addToCart(props.item)}
             >
-              <AddShoppingCartIcon/>
+            <AddShoppingCartIcon/>
             </button>
             <ReactStars
               count={5}

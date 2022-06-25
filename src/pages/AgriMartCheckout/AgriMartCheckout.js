@@ -4,7 +4,7 @@ import { useCart } from "react-use-cart";
 import axios from "axios";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
-import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card } from "antd";
+import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card, notification } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import PersonIcon from "@mui/icons-material/Person";
@@ -12,6 +12,8 @@ import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
 import { inputAdornmentClasses } from "@mui/material";
+
+
 
 const AgriMartCheckout = () => {
   const requiredValidation = [{ required: true, message: "Required" }];
@@ -58,37 +60,82 @@ const success = () => {
   const [province, setprovince] = useState("");
   const [zipcode, setzipcode] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   let handleSubmit = (e) => {
+    console.log('param',e);
+    console.log(email);
+    setIsLoading(true);
 
-    console.log(e);
-
-    try {
-      const ShippingDetail = {
-        fullname: fullname,
-        phonenumber: phonenumber,
-        email: email,
-        address: address,
-        city: city,
-        province: province,
-        zipcode: zipcode,
-      };
-console.log();
-      axios({
-        method: "post",
-        url: "http://localhost:8080/createShipping",
-        data: ShippingDetail,
-      })
-        .then((res) => {
-          console.log("result", res);
-          console.log("data", res.data);
-        })
-        .catch((error) => {
-          console.log(error);
+    axios({
+      method: "post",
+      url: "http://localhost:8080/createShipping",
+      data: e,
+    })
+      .then((res) => {
+        // alert('Product added successfully');
+        notification.success({
+          message: "Details Added Succesfully",
+          style: {
+            marginTop: '20vh',
+          },
         });
-    } catch (err) {
-      console.log(err);
-    }
+        form.resetFields();
+        setIsLoading(false);
+      })
+
+      .catch((error) => {
+        notification.error({
+          message: "Something Went Wrong",
+          style: {
+            marginTop: '20vh',
+          },
+        });
+        setIsLoading(false);
+      });
   };
+
+
+
+//   let handleSubmit = (e) => {
+
+//     console.log(e);
+
+//     try {
+//       const ShippingDetail = {
+//         fullname: fullname,
+//         phonenumber: phonenumber,
+//         email: email,
+//         address: address,
+//         city: city,
+//         province: province,
+//         zipcode: zipcode,
+//       };
+// console.log();
+// axios({
+//   method: "post",
+//   url: "http://localhost:8080/createShipping",
+//   data: ShippingDetail,
+// })
+//   .then((res) => {
+//     notification.e({
+//       message: "Product Added Successfully",
+//     });
+//     form.resetFields();
+//     setIsLoading(false);
+//   })
+
+//   .catch((error) => {
+//     notification.error({
+//       message: "Something Went Wrong",
+//     });
+//     setIsLoading(false);
+//   });
+//     } 
+//     catch (err) {
+//       console.log(err);
+//     }
+//   };
 
 
 //Col2 Table
@@ -129,7 +176,7 @@ const [cartDetails, setCartDetails] = useState([]);
                         form={form}
                         wrapperCol={{ flex: 1 }}
                       >
-                          <FormItem label="Full Name" name="name" 
+                          <FormItem label="Full Name" name="fullname" 
                             rules={[
                               { 
                                 required: true, 
@@ -147,7 +194,7 @@ const [cartDetails, setCartDetails] = useState([]);
                             </FormItem>
                             <FormItem
                           label="Phone Number"
-                          name='Phone Number'
+                          name='phonenumber'
                           placeholder = "+94"
                           required
                           rules={[
@@ -173,9 +220,16 @@ const [cartDetails, setCartDetails] = useState([]);
                           <FormItem
                             label="E mail (Optional)"
                             name="email"
+                            rules={[
+                              {
+                                
+                                type: 'email',
+                              },
+                            ]}
+                    
                           >
-                            <EmailIcon/>
-                            <Input type="email" />
+                            {/* <EmailIcon/> */}
+                            <Input/>
                           </FormItem>
 
                           <FormItem label="Address" name="address" 
@@ -235,7 +289,7 @@ const [cartDetails, setCartDetails] = useState([]);
                           </Col>
 
                           <Col md={8}>
-                            <FormItem label="Zip Code" name="zip" required
+                            <FormItem label="Zip Code" name="zipcode" required
                               rules={[
                                 { 
                                   required: true, 
