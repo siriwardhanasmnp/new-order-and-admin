@@ -9,7 +9,7 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import { useCart } from "react-use-cart";
+// import { useCart } from "react-use-cart";
 import Cart from "../pages/AgriMartCart/AgriMartCart";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -17,9 +17,9 @@ import { useEffect, useState } from "react";
 const Header = ({ onChange }) => {
   //find assets by category
 
-  const [keyword, setKeyword] = useState("");
-  const [category, setCategory] = useState("");
-  const { totalUniqueItems } = useCart();
+  // const [keyword, setKeyword] = useState("");
+  // const [category, setCategory] = useState("");
+  // const { totalUniqueItems } = useCart();
 
   useEffect(() => {
     if(onChange)

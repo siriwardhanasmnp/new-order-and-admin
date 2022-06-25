@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
-import { useCart } from 'react-use-cart';
+// import { useCart } from 'react-use-cart';
 import "./AgriMartCart.css";
 // import '@shapla/react-delete-icon/dist/delete-icon.css';
 import DeleteIcon from '@mui/icons-material/Delete';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
-import { useCart } from "react-use-cart";
+// import { useCart } from "react-use-cart";
 import axios from "axios";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
