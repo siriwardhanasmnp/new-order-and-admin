@@ -2,16 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import axios from "axios";
-// import { Input } from 'react-input-component';
-
-import "./AgriMartCheckout.css";
-import "./AgriMartCheckout.css";
 import "./AgriMartCheckout.css";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
-import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space } from "antd";
+import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
-
 import PersonIcon from "@mui/icons-material/Person";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
@@ -118,16 +113,11 @@ const [cartDetails, setCartDetails] = useState([]);
     <>
       <AgriMartNavBar />
       <div className="content">
-        <div className="row">
-          <div className="col-md-7">
-            <div className="card" style={{ height: "45rem", width: "48rem" }}>
-              <div className="card-header">
-                <h4>Basic Information</h4>
-              </div>
-              <div className="card-body">
-                <div className="row">
-                  <div>
-                    <h2 class="txt-header">Add Shipping Details</h2>
+      <Row className='checkRow'>
+        
+      <Col className='checkCol' span={12}><div>
+      <Card>
+                    <h4 class="txt-header">Add Shipping Details</h4>
                     <div class="form-style">
                       <Form
                         onFinish={handleSubmit}
@@ -144,7 +134,7 @@ const [cartDetails, setCartDetails] = useState([]);
                           name="fullName"
                           required     
                           rules={[...requiredValidation]}
-                        >
+                        ><PersonIcon/>
                           <Input />
                         </FormItem>
                         <FormItem
@@ -168,6 +158,7 @@ const [cartDetails, setCartDetails] = useState([]);
                           ]}
                           validateTrigger="onBlur"
                         >
+                          <CallIcon/>
                           <InputNumber className="w-100" />
                         </FormItem>
 
@@ -175,6 +166,7 @@ const [cartDetails, setCartDetails] = useState([]);
                           label="E mail (Optional)"
                           name="email"
                         >
+                          <EmailIcon/>
                           <Input type="email" />
                         </FormItem>
 
@@ -184,25 +176,14 @@ const [cartDetails, setCartDetails] = useState([]);
                           required
                           rules={requiredValidation}
                         >
+                          <HomeIcon/>
                           <TextArea className="w-100" />
                         </FormItem>
                         <Row gutter={8}>
                          
 
                           <Col md={8}>
-                            <FormItem label="Province" name="province" 
-                            // rules={[
-                            //   { 
-                            //     required: true, 
-                            //     message: 'Please input your Province' 
-                            //   },
-                              
-                            //   {
-                            //     pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
-                            //     message: "field does not accept numbers"
-                            //   },
-                            
-                            // ]}
+                            <FormItem label="Province" name="province"
                             rules={requiredValidation}
                             >
                               <Select className="w-100">
@@ -282,12 +263,12 @@ const [cartDetails, setCartDetails] = useState([]);
                         <Row gutter={8}>
                           <Col md={8}>
                           <Link to="/ToCart">
-                                <button
-                                  type="button"
+                                <Button
+                                type="primary"
                                   className="btn btn-primary"
                                 >
                                   Back to Cart
-                                </button>
+                                </Button>
                               </Link>
                           </Col>
                           <Col md={8}>
@@ -309,14 +290,11 @@ const [cartDetails, setCartDetails] = useState([]);
                         <Space>
                         </Space>
                       </Form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-5">
-            <table className="table table-bordered">
+                    </div></Card>
+                  </div></Col>
+
+
+            <Col className='checkCol' span={8}><table className="table table-bordered">
               <thead>
                 <tr>
                   <th width="20%">Product</th>
@@ -354,9 +332,11 @@ const [cartDetails, setCartDetails] = useState([]);
                   </td>
                 </tr>
               </tbody>
-            </table>
-          </div>
-        </div>
+              </table>
+            </Col>
+          </Row>
+         
+      
       </div>
     </>
   );

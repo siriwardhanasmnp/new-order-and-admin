@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Itemcard from "../../components/AgriMartCartComponents/Itemcard";
-import data from "../../components/data";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
-// import AgriMartFilterSideBar from '../../components/AgriMartFilterSideBar/AgriMartFilterSideBar';
 import { Card, Row, Col, Container } from "react-bootstrap";
 import "./AgriMartProduct.css";
 
@@ -18,6 +16,9 @@ const Productpg = () => {
 
   const [searchOption, setSearchOption] = useState();
 
+
+
+  //-----------Get All Products
   useEffect(() => {
     axios
       .get("http://localhost:8080/products", {params: searchOption})
@@ -37,8 +38,7 @@ const Productpg = () => {
         <div>
           <Header onChange={setSearchOption} />
         </div>
-        <div className="product-row">
-            <div className="row justify-content-center">
+      <Row className="productRow">
               {posts.map((item, index) => {
                 return (
                   <Itemcard
@@ -52,8 +52,8 @@ const Productpg = () => {
                   />
                 );
               })}
-            </div>
-            </div>
+              </Row>
+
             <AgriMartFooter/>
     </>
   );

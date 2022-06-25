@@ -134,7 +134,8 @@ const success = () => {
       </div>
       <div className='py-9'>
         <div className='container'>
-          <Row gutter={[8, 8]}>
+          <Card className="profileCard1">
+          <Row className="profileRow" gutter={[8, 8]}>
             <Col span={12}>
               <div className="profile-card">
                 <Card 
@@ -282,9 +283,11 @@ const success = () => {
                   </Card>
                 </div>
               </Col>
-          </Row>
-          <div className='row'>
-            
+          </Row> </Card>
+
+         
+          <div className='profileRow2'>
+          <Card>
          
               <Tabs type="card">
                         <TabPane tab="My Orders" key="2">
@@ -336,8 +339,10 @@ const success = () => {
                             </div>
 
                         </TabPane> */}
-                    </Tabs>                     
+                    </Tabs> 
+                    </Card>                    
           </div>
+          
         </div>
       </div>
     </div>

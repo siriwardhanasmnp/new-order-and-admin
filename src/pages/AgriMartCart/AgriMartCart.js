@@ -7,8 +7,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
+import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
 import { Form } from 'react-bootstrap';
 import axios from "axios";
+
+
+//----------------Corfirm Cart Item Deletion
+
+
+
+
+
+
 const Cart =() =>{
   
   const { 
@@ -33,27 +43,11 @@ const Cart =() =>{
   })
   },[])
 
-  // const [searchOption, setSearchOption] = useState();
-
-
-  // if (isEmpty) return <div className='row'>
-  //                       <AgriMartNavBar/>
-  //                         <div className='row2'>
-  //                          <h1 >Your Cart is Empty</h1>
-  //                         </div>
-
-  //                         <div className='row3'>
-  //                          <Link to="/ToProducts"><button className='shop'>Shop Now</button></Link>
-  //                         </div>
-  //                     </div>
   return (
     <>
       <AgriMartNavBar/>
-      <div className='py-4'>
-        <div className='container'>
-          <div className='row'>
-              <div className='col-md-7'>
-                <div className='card'>
+      <Row className='cartRow'>
+      <Col className='cartCol' span={10}> <div className='card'>
                   <div className='card-header'>
                   <h4>Cart</h4>
                   </div>
@@ -74,7 +68,6 @@ const Cart =() =>{
                     return(
                     <>
                       <tr key={index}>
-                      {/* <input type="checkbox" value="Select" name="Select" />  */}
                       <td><img src={item.img} style={{height:'5rem',width:'5rem'}}/></td>
                       <td>{item.product.productTitle}</td>
                       <td>Rs. {item.totalPrice}</td>
@@ -85,7 +78,7 @@ const Cart =() =>{
                       </td>
                       <td>
                       <button className='btn ms-2' onClick={() => removeItem(item.id)}>
-                        <DeleteIcon/>
+                        <DeleteIcon className='deleteicon'/>
                         </button>
                       </td>
                       </tr>
@@ -101,38 +94,36 @@ const Cart =() =>{
                   <div className='col-auto'> <button className='btn btn-danger m-2' onClick={() => emptyCart()}>Clear Cart</button></div>   
                 </div> 
                 </div>
-              </div>
-              <div className='col-md-5'>
-              <div className='col-md-'>
-              <div className='card' margin-top='50%'>
+                </Col>
+      <Col className='cartCol2' span={10}>
+      <div className='card' margin-top='50%'>
                 <div className='card-header'>
                 <h4>Order Summery</h4>
                 </div>                  
                   <div className='card-body'>
-                    <div className='row'>
+                  
                     <table className='table table-light table-hover m-0'>
                     <tr className='trow'>
-                    <td ><h3>Total Items</h3></td>
-                    <td className='txright'><h2>{totalUniqueItems}</h2></td>
+                    <td ><h5>Total Items</h5></td>
+                    <td className='txright'><h5>{totalUniqueItems}</h5></td>
                     </tr>
                     <tr>
-                    <td><h3>Total Price: </h3></td>
-                    <td><h3>Rs. {cartTotal}.00</h3></td>
+                    <td><h5>Total Price: </h5></td>
+                    <td><h5>Rs. {cartTotal}.00</h5></td>
                     </tr>
                     </table>
                     <div className='col-md-6'>
                     <div className='from-group mb-3'>
-                    <div> <Link to="/ToCheckout"><button className='btn btn-primary m-2'  Link to="/Checkout">Checkout</button></Link></div> 
+                    <div> <Link to="/ToCheckout"><Button type="primary" className='btn btn-primary m-2'  Link to="/Checkout">Checkout</Button></Link></div> 
                     </div>
-                    </div>
+                    
                     </div>
                   </div>
-              </div>                      
-              </div>
-              </div>
-          </div>
-        </div>
-      </div>
+              </div>    
+
+      </Col>
+    </Row>
+   
 </> 
   ); 
 }

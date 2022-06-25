@@ -1,21 +1,25 @@
 import React from 'react';
-import {Card, Button, Table} from "react-bootstrap";
-import {Radio, Typography, currentValueRadio, setcurrentValueRadio} from 'antd';
-import FormItem from "antd/lib/form/FormItem";
-import TextArea from "antd/lib/input/TextArea";
-import './AgriMartPayment.css';
-
+import {Card,Table} from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import FormItem from "antd/lib/form/FormItem";
 import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
+import './AgriMartPayment.css';
 import { Nav, Row, Col, Label, NavItem} from 'react-bootstrap';
 import viber from '../../resources/images/viber.png'
 import whatsapp from '../../resources/images/wssap.png'
+import {Radio, Button, Typography, currentValueRadio, setcurrentValueRadio,Tabs, Space} from 'antd';
+import TextArea from "antd/lib/input/TextArea";
 
-import { Tabs } from 'antd';
+//---------TabPane
 const { TabPane } = Tabs;
 function AgriMartPayment() {
-  return (
-    
+
+//
+  
+
+
+  
+return (    
 <div className="App">
 <>
 <AgriMartNavBar/>
@@ -41,6 +45,7 @@ function AgriMartPayment() {
                           <TextArea className="w-100" />
                           </Col>
                         </Row>
+                        <Space></Space>
                         <Radio value={2}><h4>Bank Payment</h4></Radio>
                         <h6> Step 1 : Select a Bank</h6>
                         <Tabs type="card">
@@ -173,25 +178,20 @@ function AgriMartPayment() {
                                     </tbody>
                                 </Table>
                             </div>
-
                         </TabPane>
                     </Tabs>
                       </Row>
                     </Radio.Group>               
-                   
-                       
                         <Row gutter={8}>
-                          <Col md={16}>
-                          
-                          <Link to="/ToCheckout"><div className='pay-btn'><button type="button" class="btn btn-primary btn-lg">Back to Checkout</button></div></Link>
+                        <FormItem>
+                          <Col md={8}>  
+                          <Link to="/ToCheckout"><div><Button type="button" primary >Back to Checkout</Button></div></Link>
                           </Col>
-                          
-                          <Col md={16}>
-                          <div className='pay-btn'><button type="button" class="btn btn-danger btn-lg">Finish</button></div>
+                          <Col md={8}>
+                          <div className='pay-btn'><Button type="button" danger >Finish</Button></div>
                           </Col>
+                          </FormItem>
                         </Row>
-                       
-                  {/* <div className='pay-btn'><button type="button" class="btn btn-primary btn-lg">Finish</button></div> */}
                   </div>
                 </div>
               </div></Col>

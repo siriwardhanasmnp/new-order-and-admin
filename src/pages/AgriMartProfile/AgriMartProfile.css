@@ -8,10 +8,14 @@
     transition: transform .1700s;
   }
 
-  .col-md-5{
-    background-color: rgb(205, 205, 205);
-  }
+
 
 .py-9{
   padding-top: 10em;
 }
+
+.profileRow2{
+  margin-top: 5em;
+}
+
+
