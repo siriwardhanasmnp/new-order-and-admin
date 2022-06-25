@@ -164,7 +164,7 @@ const success = () => {
       <Row className='checkRow'>
         
       <Col className='checkCol' span={12}><div>
-      <Card>
+      <Card className='checkCardForm'>
                     <h4 class="txt-header">Add Shipping Details</h4>
                     <div class="form-style">
                     <Form
