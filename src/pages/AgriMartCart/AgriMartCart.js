@@ -15,12 +15,6 @@ import axios from "axios";
 
 
 //----------------Corfirm Cart Item Deletion
-
-
-
-
-
-
 const Cart =() =>{
   
   const { 
@@ -46,7 +40,7 @@ const Cart =() =>{
   },[])
 
   return (
-    <>
+    <div className='cartAll'>
       <AgriMartNavBar/>
       <Row className='cartRow'>
       <Col className='cartCol' span={10}> <div className='card'>
@@ -90,8 +84,8 @@ const Cart =() =>{
                           />
                         }
                       ><button className='btn ms-2' >
-                                            <DeleteIcon className='deleteicon'/>
-                                            </button>
+                         <DeleteIcon className='deleteicon'/>
+                       </button>
                       </Popconfirm>
                       </td>
                       </tr>
@@ -102,14 +96,19 @@ const Cart =() =>{
                     </table>
                   </div>
              
-                <div className='row'>
-                  <div className='col-auto'><Link to="/ToProducts"><button className='btn btn-primary m-2'  >Shop More</button></Link></div>
-                  <div className='col-auto'> <button className='btn btn-danger m-2' onClick={() => emptyCart()}>Clear Cart</button></div>   
-                </div> 
+                  <Row className='cartButtons'>
+                  <Col className='cartShopmoreBtn'><Link to="/ToProducts"><Button type='primary' >Shop More</Button></Link></Col>
+                    <Col> <Popconfirm title="Are you sure？" icon={<QuestionCircleOutlined style={{ color: 'red' }} />}>
+                            <Button type='danger' onClick={() => emptyCart()}>Clear Cart</Button>
+                          </Popconfirm>
+                    </Col>   
+                  </Row>
                 </div>
+
                 </Col>
-      <Col className='cartCol2' span={10}>
-      <div className='card' margin-top='50%'>
+
+                <Col className='cartCol2' span={10}>
+                <div className='card' margin-top='50%'>
                 <div className='card-header'>
                 <h4>Order Summery</h4>
                 </div>                  
@@ -140,7 +139,7 @@ const Cart =() =>{
     <div>
         <AgriMartFooter/>
       </div>
-</> 
+</div>
   ); 
 }
 

@@ -157,7 +157,7 @@ const [cartDetails, setCartDetails] = useState([]);
   console.log("re-rendered");
 
   return (
-    <>
+    <div className='cart'>
       <AgriMartNavBar />
       <div className="content">
       <Row className='checkRow'>
@@ -362,7 +362,9 @@ const [cartDetails, setCartDetails] = useState([]);
                   </div></Col>
 
 
-            <Col className='checkCol' span={8}><table className="table table-bordered">
+            <Col className='checkCol' span={8}>
+              <Card className='checkCard'>
+              <table className="table table-bordered">
               <thead>
                 <tr>
                   <th width="20%">Product</th>
@@ -399,12 +401,13 @@ const [cartDetails, setCartDetails] = useState([]);
                 </tr>
               </tbody>
               </table>
+              </Card>
             </Col>
           </Row>
          
       
       </div>
-    </>
+      </div>
   );
 };
 

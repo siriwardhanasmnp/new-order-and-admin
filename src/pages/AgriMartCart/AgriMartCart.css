@@ -80,3 +80,13 @@
 .deleteicon{
     color: rgb(194, 7, 7);
 }
+.cartButtons{
+    margin-top: 5ex;
+    margin-bottom: 2em;
+    margin-left: 5em;
+}
+
+.cartShopmoreBtn{
+    margin-right: 20em;
+}
+
