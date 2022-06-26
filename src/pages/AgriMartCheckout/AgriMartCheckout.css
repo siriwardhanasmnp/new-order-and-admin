@@ -21,3 +21,8 @@
 .checkCardForm{
     border-radius: 1em;
 }
+
+.paymentCard{
+    border-radius: 1em;
+    margin-bottom: 10em;
+}

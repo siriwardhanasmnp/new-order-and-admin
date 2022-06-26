@@ -68,6 +68,10 @@
     background-color: rgb(251, 249, 249);
 } */
 
+.cart{
+    background-color: rgb(240, 240, 240);
+}
+
 .cartRow{
     padding-top: 10em;
     padding-left: 5em;
