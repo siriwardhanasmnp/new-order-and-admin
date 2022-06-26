@@ -12,6 +12,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
 import { Form } from 'react-bootstrap';
 import axios from "axios";
+import { withCurrentUserContext } from '../../context/UserContext';
 
 
 //----------------Corfirm Cart Item Deletion
@@ -40,7 +41,7 @@ const Cart =() =>{
   },[])
 
   return (
-    <div className='cartAll'>
+    <div className='cart'>
       <AgriMartNavBar/>
       <Row className='cartRow'>
       <Col className='cartCol' span={10}> <div className='card'>
@@ -145,5 +146,5 @@ const Cart =() =>{
   ); 
 }
 
-export default Cart;
+export default withCurrentUserContext(Cart);
 

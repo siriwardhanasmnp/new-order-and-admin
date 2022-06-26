@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 // import { useCart } from "react-use-cart";
 import axios from "axios";
 import "./AgriMartCheckout.css";
+import {Table} from "react-bootstrap";
 import AgriMartNavBar from "../../components/AgriMartNavBar/AgriMartNavBar";
-import { Button, Col, Form, Input, InputNumber, Row, message, Select, Space, Card, notification } from "antd";
+import { Button, Col, Form, Input,Modal, InputNumber, Row, message, Select, Space, Card, notification, Radio, Tabs, Alert, Spin} from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import PersonIcon from "@mui/icons-material/Person";
@@ -12,13 +13,27 @@ import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
 import { inputAdornmentClasses } from "@mui/material";
+import { axiosInstance } from '../../services';
 
 
+
+
+ 
 
 const AgriMartCheckout = () => {
   const requiredValidation = [{ required: true, message: "Required" }];
 
-  //-------------Success Message
+  //----------See More Model
+    const [visible, setVisible] = useState(false);
+  
+    const showModal = () => {
+      setVisible(true);
+    };
+  
+//----------------Tab Pane
+const { TabPane } = Tabs;
+
+//-------------Success Message
   const key = 'updatable';
 
 const success = () => {
@@ -66,12 +81,7 @@ const success = () => {
     console.log('param',e);
     console.log(email);
     setIsLoading(true);
-
-    axios({
-      method: "post",
-      url: "http://localhost:8080/createShipping",
-      data: e,
-    })
+    axiosInstance.post("/createShipping", e)
       .then((res) => {
         // alert('Product added successfully');
         notification.success({
@@ -139,8 +149,7 @@ const success = () => {
 
 
 //Col2 Table
-  const [cartDetails, setCartDetails] = useState([]);
-
+const [cartDetails, setCartDetails] = useState([]);
   useEffect(()=>{
     axios.get("http://localhost:8080/receiveToCart")
     .then(res => {
@@ -151,20 +160,18 @@ const success = () => {
     console.error(err)
   })
   },[])
-
-
-  
-
   console.log("re-rendered");
 
+
   return (
-    <div className='cart'>
+    <div className='check'>
       <AgriMartNavBar />
       <div className="content">
       <Row className='checkRow'>
         
       <Col className='checkCol' span={12}><div>
-      <Card className='checkCardForm'>
+
+      <Card>
                     <h4 class="txt-header">Add Shipping Details</h4>
                     <div class="form-style">
                     <Form
@@ -243,7 +250,7 @@ const success = () => {
                               // {
                               //   pattern: new RegExp(/^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i),
                               //   message: "field does not accept numbers"
-                              // },
+                              // ,
                             
                             ]}
                              >
@@ -311,10 +318,8 @@ const success = () => {
 
                         <Row gutter={8}>
                           <Col md={8}>
-                         
                           </Col>
                           <Col md={8}>
-                         
                           </Col>
                           <Col md={8}>
                           <Button
@@ -322,13 +327,11 @@ const success = () => {
                                     htmlType="submit"
                                     className="my-2 btn-danger"
                                     varient="danger"
-                                    
                                   >
                                     Save
                                   </Button>
                           </Col>
                         </Row>
-
                         <Row gutter={8}>
                           <Col md={8}>
                           <Link to="/ToCart">
@@ -364,6 +367,173 @@ const success = () => {
 
 
             <Col className='checkCol' span={8}>
+              <Card className='paymentCard'>
+                <h4>Select payment method</h4>
+                <Radio.Group>
+              <Radio value={1}><h6>Cash On Delevery</h6></Radio>
+                        <Row gutter={8}>
+                          <Col md={16}>
+                            <TextArea className="w-100" />
+                          </Col>
+                        </Row>
+                        <Space></Space>
+                        <Radio value={2}><h6>Bank Payment</h6></Radio></Radio.Group>
+                        <h7><a href='#' onClick={() => setVisible(true)}>see details</a></h7>
+                        <Modal
+                          title="Select Bank"
+                          centered
+                          visible={visible}
+                          onOk={() => setVisible(false)}
+                          width={600}
+                          height={500}
+                        >
+                                <Tabs type="card">
+                        <TabPane tab="People's Bank" key="1">
+                            <div class="table-style">
+
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                        <th>Name</th> 
+                                        <th>Account Number</th>
+                                        <th>Branch</th>    
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.D.P Perera</td> 
+                                        <td>324563</td>
+                                        <td>Katubedda</td>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </Table>
+
+                            </div>
+                        </TabPane>
+                        <TabPane tab="Bank of Ceylon" key="2">
+                            <div class="table-style">
+
+                            <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                        <th>Name</th> 
+                                        <th>Account Number</th>
+                                        <th>Branch</th>    
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.D.P Perera</td> 
+                                        <td>6354287</td>
+                                        <td>Kottawa</td>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </Table>
+
+                            </div>
+
+                        </TabPane>
+                        <TabPane tab="Commercial Bank" key="3">
+                            <div class="table-style">
+
+                            <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                        <th>Name</th> 
+                                        <th>Account Number</th>
+                                        <th>Branch</th>    
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.D.P Perera</td> 
+                                        <td>1035654</td>
+                                        <td>Maharagama</td>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </Table>
+
+                            </div>
+
+                        </TabPane>
+                        <TabPane tab="Nation's Trust" key="4">
+                            <div class="table-style">
+
+                            <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                        <th>Name</th> 
+                                        <th>Account Number</th>
+                                        <th>Branch</th>    
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.D.P Perera</td> 
+                                        <td>1254672576</td>
+                                        <td>Moratuwa</td>    
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </Table>
+
+                            </div>
+
+                        </TabPane>
+                    </Tabs>
+                    <Tabs type="card">
+                        <TabPane tab="Whats App" key="1">
+                            <div class="table-style">
+
+                                <Table striped bordered hover>
+                                <thead>
+                                        <tr>
+                                        <th>Name</th> 
+                                        <th>Phone Number</th>   
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.P Sugathapala</td> 
+                                        <td>0712343265</td>   
+                                        </tr>
+                                    </thead>
+                                </Table>
+
+                            </div>
+                        </TabPane>
+                        <TabPane tab="Viber" key="2">
+                            <div class="table-style">
+
+                            <Table striped bordered hover>
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th> 
+                                        <th>Phone Number</th>   
+                                        </tr>
+                                        <tr>
+                                        <td>S.M.P Sugathapala</td> 
+                                        <td>0712343265</td>   
+                                        </tr>
+                                    </thead>
+                                </Table>
+
+                            </div>
+
+                        </TabPane>  
+                      </Tabs>
+                        </Modal>
+                        <Button type="danger" block> 
+                        {/* <Spin tip="Loading...">
+                          <Alert
+                            message="Alert message title"
+                            description="Further details about the context of this alert."
+                            type="info"
+                          />
+                        </Spin> */}
+                        Place Order</Button>
+              </Card>
               <Card className='checkCard'>
               <table className="table table-bordered">
               <thead>
@@ -375,8 +545,6 @@ const success = () => {
                 </tr>
               </thead>
               <tbody>
-              
-                  return (
                     <>
                       <tr>
                         <td>
@@ -390,7 +558,7 @@ const success = () => {
                         <td>Rs. 33</td>
                       </tr>
                     </>
-                  );
+                  
              
                 <tr>
                   <td colSpan="2" className="text-left">
@@ -410,7 +578,7 @@ const success = () => {
       </div>
       </div>
   );
-}
+  
+};
 
-
-export default AgriMartCheckout;
+export default AgriMartCheckout

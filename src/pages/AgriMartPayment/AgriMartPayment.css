@@ -7,12 +7,16 @@
     padding-top: 7em;
 } */
 
+.paymentRow{
+    align-items: center;
+}
+
 .bp{
     padding-top: 10em;
 }
 
 .card-body{
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(255, 255, 255);
 
 }
 
@@ -40,9 +44,10 @@
     padding-top: 100em;
 }
 
-.payment-column-two{
-    padding-top: 10em;
-    height: 1000em;
+.paymentColTwo{
+    padding-top: 0em;
+    padding-left: 20%;
+    height: 10em;
     width: 10em;
 }
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Badge, Image } from 'react-bootstrap';
 import './AgriMartNavBar.css';
 import logo from '../../resources/images/logo.png'
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 function AgriMartNavBar() {
     return (
         <Navbar class="nav-styles" collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
@@ -17,39 +19,17 @@ function AgriMartNavBar() {
                         <Nav.Link href="/aboutus">About Us</Nav.Link>
                     </Nav>
                     <Nav>
-                        <div class="badge-style">
-                            <Link to="/signin">
-                            <Badge pill bg="success">
-                            Sign In 
-                        </Badge>
-                            </Link>
-                        
-                         {/* <Link to="/signup">
-                         <Badge  pill bg="success">
-                            SIgn Up
-                        </Badge>
-                         </Link> */}
-                     
-                        </div>
-                    </Nav>
-                    <Nav>
-                        <div class="badge-style">
-                            <Link to="/signUp">
-                            <Badge pill bg="success">
-                            Sign Up 
-                                </Badge>
-                            </Link>
+                    <Nav.Link href='/login'>Sign in</Nav.Link>
 
-                        </div>
+                    <Nav.Link href='/register'>Sign Up</Nav.Link>
                     </Nav>
                     <Nav>
+
+                        
                         <div class="profile-style">
                             <Link to="/CustomerProfile">
-                            <Badge pill bg="success">
-                            User Name 
-                                </Badge>
+                            <Avatar size="large" icon={<UserOutlined />} />
                             </Link>
-
                         </div>
                     </Nav>
                 </Navbar.Collapse>

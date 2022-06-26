@@ -128,7 +128,7 @@ const success = () => {
 
 
   return (
-    <div>
+    <div className="profile">
        <div>
         <AgriMartProfileNavBar />
       </div>
@@ -287,7 +287,6 @@ const success = () => {
 
          
           <div className='profileRow2'>
-          <Card>
          
               <Tabs type="card">
                         <TabPane tab="My Orders" key="2">
@@ -339,8 +338,7 @@ const success = () => {
                             </div>
 
                         </TabPane> */}
-                    </Tabs> 
-                    </Card>                    
+                    </Tabs>                  
           </div>
           
         </div>
