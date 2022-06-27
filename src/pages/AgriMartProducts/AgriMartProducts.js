@@ -4,8 +4,10 @@ import Itemcard from "../../components/AgriMartCartComponents/Itemcard";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
+import { axiosInstance } from '../../services';
 
 import { Card, Row, Col, Container } from "react-bootstrap";
+import { withCurrentUserContext } from '../../context/UserContext';
 import "./AgriMartProduct.css";
 
 const Productpg = () => {
@@ -17,20 +19,29 @@ const Productpg = () => {
 
   const [searchOption, setSearchOption] = useState();
 
-
+  useEffect(() => {
+    axiosInstance.get('/products')
+    .then((res) => {
+      console.log(res.data);
+      setPosts(res.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }, [searchOption]);
 
   //-----------Get All Products
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/products", {params: searchOption})
-      .then((res) => {
-        console.log(res.data);
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [searchOption]);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8080/products", {params: searchOption})
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setPosts(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, [searchOption]);
 
   
 
@@ -60,4 +71,4 @@ const Productpg = () => {
   );
 };
 
-export default Productpg;
+export default (Productpg);

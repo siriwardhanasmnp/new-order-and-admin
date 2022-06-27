@@ -1,10 +1,10 @@
 import { Axios } from "axios";
 import { auth } from "../config/FirebaseConfig";
 
-const baseUrl = 'http://localhost:8080';
+const baseURL = 'http://localhost:8080';
 
 export const axiosInstance = new Axios({
-    baseUrl,
+    baseURL,
     headers: {
         'Content-Type': 'application/json'
     },
