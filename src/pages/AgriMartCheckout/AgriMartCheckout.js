@@ -14,6 +14,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
 import { inputAdornmentClasses } from "@mui/material";
 import { axiosInstance } from '../../services';
+import { ConsoleSqlOutlined } from '@ant-design/icons';
+import { withCurrentUserContext } from '../../context/UserContext';
 
 
 
@@ -79,8 +81,8 @@ const success = () => {
 
   let handleSubmit = (e) => {
     console.log('param',e);
-    console.log(email);
     setIsLoading(true);
+    
     axiosInstance.post("/createShipping", e)
       .then((res) => {
         // alert('Product added successfully');
@@ -95,6 +97,7 @@ const success = () => {
       })
 
       .catch((error) => {
+        // console.error();
         notification.error({
           message: "Something Went Wrong",
           style: {
@@ -148,10 +151,11 @@ const success = () => {
 //   };
 
 
-//Col2 Table
+//Get Shipping details according to Current User
 const [cartDetails, setCartDetails] = useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:8080/receiveToCart")
+    axiosInstance.post("/getList")
+    // axios.get("http://localhost:8080/receiveToCart")
     .then(res => {
       console.log(res.data);
       setCartDetails(res.data)
@@ -367,6 +371,7 @@ const [cartDetails, setCartDetails] = useState([]);
 
 
             <Col className='checkCol' span={8}>
+              <Row>
               <Card className='paymentCard'>
                 <h4>Select payment method</h4>
                 <Radio.Group>
@@ -534,6 +539,7 @@ const [cartDetails, setCartDetails] = useState([]);
                         </Spin> */}
                         Place Order</Button>
               </Card>
+              </Row>
               <Card className='checkCard'>
               <table className="table table-bordered">
               <thead>
@@ -581,4 +587,4 @@ const [cartDetails, setCartDetails] = useState([]);
   
 };
 
-export default AgriMartCheckout
+export default withCurrentUserContext(AgriMartCheckout);

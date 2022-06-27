@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form,} from "react-bootstrap";
 import Login from "../Login/Login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import { useForm } from "react-hook-form";
 import { cardStyles } from "./StyleComponents";
@@ -11,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { axiosInstance } from "../../services";
 import { signInWithCustomToken } from "firebase/auth";
 import { auth } from "../../config/FirebaseConfig";
-
+// import {AutoComplete,Button,Cascader,Checkbox,Col,Form,Input,InputNumber,Row,Select,} from 'antd';
+// import React, { useState } from 'react';
 
 
 
@@ -40,38 +41,29 @@ export default function Register() {
   const [isChecked,setIsChecked] =useState(false);
   const [checkedMsg,setCheckedMsg] = useState(null);
   
-
+//----------Validation
   const onSubmit = (data) => {
     console.log(data);
    
   };
   function validateEmail(email) 
   {
-      //var re = /\S+@\S+/;
       var re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
       return re.test(email);
   }
   function validatepassword(password) 
   {
-      //var re = /\S+@\S+/;
       var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-
-
       return re.test(password);
   }
   function validateConfirmPassword(ConfirmPassword) 
   {
-      //var re = /\S+@\S+/;
       var re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-
       return re.test(ConfirmPassword);
   }
   function validatePhone(phone) 
   {
-      //var re = /\S+@\S+/;
       var re = /(\+\d{1,3}\s?)?((\(\d{3}\)\ys?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g
-
-
       return re.test(phone);
   }
   
@@ -85,6 +77,8 @@ export default function Register() {
   const name_empty_error_msg=<div style={{color:"red"}}>Full Name is required.</div>
   const ConfirmPassword_empty_error_msg=<div style={{color:"red"}}>Confirm Password is required.</div>
   const gender_empty_error_msg=<div style={{color:"red"}}>Gender is required.</div>
+  const navigate = useNavigate();
+
 
   
 async function handleFormSubmit(e) {
@@ -94,11 +88,16 @@ async function handleFormSubmit(e) {
       return;
     }
     try{
-     
-    const rst = await axiosInstance.post('/auth/register', {});
+    const rst = await axiosInstance.post('/auth/register', {
+      fullName: name,
+      email: email,
+      password: password,
+      phoneNo: phone,
+      gender: Gender
+    });
     const customToken = rst.data;
         await signInWithCustomToken(auth, customToken);
-        // navigate
+        navigate("/");
     }catch(e){
         throw e;
     }
@@ -132,6 +131,10 @@ async function handleFormSubmit(e) {
     <div> 
      <ToastContainer/>
     <Section>
+
+
+
+
      
           {" "}
           {login ? (
@@ -294,7 +297,7 @@ async function handleFormSubmit(e) {
                       
                 // }
                 console.log(password, ConfirmPassword);
-                if(password != ConfirmPassword){
+                if(password !== ConfirmPassword){
                   setPassword_mismatch_error(true);
                 }else{
                   setPassword_mismatch_error(false);

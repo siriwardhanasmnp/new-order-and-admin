@@ -5,19 +5,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
-  Button,
-  Form,
-  Row,
-  Input,
-  InputNumber,
-  Select,
-  Space,
-  notification,
-} from "antd";
+  Button,Form,Row,Input,InputNumber,Select,Space,notification,} from "antd";
 import {Card,Table} from "react-bootstrap";
 import FormItem from "antd/lib/form/FormItem";
 import TextArea from "antd/lib/input/TextArea";
 import { Tabs } from 'antd';
+import { withCurrentUserContext } from '../../context/UserContext';
 const { TabPane } = Tabs;
 
 function AgriMartProfile(props) {
@@ -228,4 +221,4 @@ function AgriMartProfile(props) {
   );
 }
 
-export default AgriMartProfile;
+export default withCurrentUserContext(AgriMartProfile);
