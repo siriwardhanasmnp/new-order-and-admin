@@ -14,7 +14,7 @@ const Productpg = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const navigateToConfirmed = (post) => {
-    navigate(`/confirmed`, { state: post }); // here we will redirect user and send your data into state
+    navigate(`/confirmed`, { state: post });
   };
 
   const [searchOption, setSearchOption] = useState();
