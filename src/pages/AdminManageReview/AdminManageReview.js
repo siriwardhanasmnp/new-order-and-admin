@@ -180,7 +180,7 @@ function AdminManageReview () {
     
     return (
         <div>
-        <div>
+          <div>
             <AgriMartAdminNavBar />
 
         </div>
@@ -188,9 +188,8 @@ function AdminManageReview () {
         <div className='main'>
                 <h2  class="txt-header">Reviews</h2>
                 <div style={{float:'left', position:'fixed'}}><AgriMartAdminSideBar/></div>
-                <div className="card-container" style={{margin:'0px 100px 0px 210px', position:'relative'}} >
                 
-                {/* <div className='subMain'>
+                <div className='subMain' style={{margin:'0px 100px 0px 210px', position:'relative'}} >
                 <table class="table table-borderless table-dark">
                     <thead>
                         <tr>
@@ -210,7 +209,7 @@ function AdminManageReview () {
                     
                     </tbody>
                 </table>
-                </div> */}
+                </div>
             </div>
             <div className='size'>
            
@@ -219,7 +218,6 @@ function AdminManageReview () {
             <AgriMartFooter/>
 
         </div>
-</div>
     </div>
 
       );
