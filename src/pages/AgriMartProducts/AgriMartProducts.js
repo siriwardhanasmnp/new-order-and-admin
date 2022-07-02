@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
 import { axiosInstance } from '../../services';
-
 import { Card, Row, Col, Container } from "react-bootstrap";
 import { withCurrentUserContext } from '../../context/UserContext';
 import "./AgriMartProduct.css";
