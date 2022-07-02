@@ -39,12 +39,12 @@ const AgriMartSideBar = ({ children }) => {
       width: 0,
       padding: 0,
       transition: {
-        duration: 0.2,
+        duration: 0.4,
       },
     },
     show: {
       width: "140px",
-      padding: "5px 15px",
+      padding: "0px",
       transition: {
         duration: 0.2,
       },
@@ -70,13 +70,14 @@ const AgriMartSideBar = ({ children }) => {
 
   return (
     <>
-      <div className="main-container">
+      <div className="main-container" style={{backgroundColor:'black', borderRadius:'0px 10px 10px 0px',height:'450px'}}>
+        <div style={{height:'15px'}}></div>
         <motion.div
           animate={{
             width: isOpen ? "200px" : "45px",
 
             transition: {
-              duration: 0.5,
+              duration: 1.0,
               type: "spring",
               damping: 10,
             },
@@ -93,32 +94,20 @@ const AgriMartSideBar = ({ children }) => {
                   exit="hidden"
                   className="logo"
                 >
-                  <div style={{color:"white"}}>Admin Portal</div>
+                  <h5 style={{color:'white', textAlign:'center'}}>Admin Portal</h5>
                 </motion.h1>
               )}
             </AnimatePresence>
 
             <div className="bars">
-              <FaBars onClick={toggle} />
+              <FaBars style={{color:'white', marginTop:'20px', position:'fixed', fontSize:'22px'}} onClick={toggle} />
             </div>
           </div>
-          <div className="search">
-            <div className="search_icon">
-              <BiSearch />
-            </div>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.input
-                  initial="hidden"
-                  animate="show"
-                  exit="hidden"
-                  variants={inputAnimation}
-                  type="text"
-                  placeholder="Search"
-                />
-              )}
-            </AnimatePresence>
-          </div>
+
+
+<div style={{height:'60px'}}></div>
+
+
           <section className="routes">
             {routes.map((route, index) => {
               if (route.subRoutes) {
@@ -139,7 +128,7 @@ const AgriMartSideBar = ({ children }) => {
                   className="link"
                   activeClassName="active"
                 >
-                  <div className="icon">{route.icon}</div>
+                  <div className="icon" style={{color:'white', fontSize:'25px'}}>{route.icon}</div>
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -148,6 +137,7 @@ const AgriMartSideBar = ({ children }) => {
                         animate="show"
                         exit="hidden"
                         className="link_text"
+                        style={{color:'#C0C0C0', marginLeft:'20px', paddingBottom:'10px'}}
                       >
                         {route.name}
                       </motion.div>
