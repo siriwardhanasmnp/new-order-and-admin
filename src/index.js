@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
+import AdminDashboardRoutes from './AdminDashboardRoutes';
 
 import './config/FirebaseConfig';
 

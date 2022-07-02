@@ -16,6 +16,7 @@ function AgriMartNavBar() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                      <Nav.Link href='/portal'>Farmer Portal</Nav.Link>
+                     <Nav.Link href='/portal'>Admin Portal</Nav.Link>
                         <Nav.Link href="/aboutus">About Us</Nav.Link>
                     </Nav>
                     <Nav>
@@ -24,8 +25,6 @@ function AgriMartNavBar() {
                     <Nav.Link href='/register'>Sign Up</Nav.Link>
                     </Nav>
                     <Nav>
-
-                        
                         <div class="profile-style">
                             <Link to="/CustomerProfile">
                             <Avatar size="large" icon={<UserOutlined />} />
