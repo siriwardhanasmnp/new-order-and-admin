@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import AgriMartFooter from "../../components/AgriMartFooter/AgriMartFooter";
 import { axiosInstance } from '../../services';
+
 import { Card, Row, Col, Container } from "react-bootstrap";
 import { withCurrentUserContext } from '../../context/UserContext';
 import "./AgriMartProduct.css";
@@ -13,13 +14,14 @@ const Productpg = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const navigateToConfirmed = (post) => {
-    navigate(`/confirmed`, { state: post });
+    navigate(`/confirmed`, { state: post }); // here we will redirect user and send your data into state
   };
 
   const [searchOption, setSearchOption] = useState();
+  const [filterOption, setfilterOption] = useState();
 
   useEffect(() => {
-    axiosInstance.get('/products')
+    axiosInstance.get('/getProducts', {params: searchOption})
     .then((res) => {
       console.log(res.data);
       setPosts(res.data);
