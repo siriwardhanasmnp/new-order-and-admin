@@ -6,13 +6,12 @@ import "./AgriMartCart.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
+import AgriMartCheckNavBar from '../../components/AgriMartCheckNavBar/AgriMartCheckNavBar';
 import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Button, Col, Input, InputNumber, Row, message, Select, Space, Card,Popconfirm } from "antd";
-import { Form } from 'react-bootstrap';
-import axios from "axios";
 import { withCurrentUserContext } from '../../context/UserContext';
+import { axiosInstance } from '../../services';
 
 
 //----------------Corfirm Cart Item Deletion
@@ -30,7 +29,7 @@ const Cart =() =>{
 
   const [cartDetails, setCartDetails] = useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:8080/receiveToCart")
+    axiosInstance.get('/receiveToCart')
     .then(res => {
       console.log(res.data);
       setCartDetails(res.data)
@@ -42,7 +41,7 @@ const Cart =() =>{
 
   return (
     <div className='cart'>
-      <AgriMartNavBar/>
+      <AgriMartCheckNavBar/>
       <Row className='cartRow'>
       <Col className='cartCol' span={10}> <div className='card'>
                   <div className='card-header'>

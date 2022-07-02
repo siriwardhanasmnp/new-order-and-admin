@@ -6,7 +6,6 @@ import Productpg from "./pages/AgriMartProducts/AgriMartProducts";
 import Cart from "./pages/AgriMartCart/AgriMartCart";
 import Checkout from "./pages/AgriMartCheckout/AgriMartCheckout";
 import { CartProvider } from "react-use-cart";
-import AgriMartPayment from "./pages/AgriMartPayment/AgriMartPayment";
 import AgriMartProfile from "./pages/AgriMartProfile/AgriMartProfile";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
@@ -47,15 +46,7 @@ function App() {
               }
             />
             <Route path="/CustomerProfile" element={<AgriMartProfile />} />
-            <Route
-              path="/ToPayment"
-              element={
-                <CartProvider>
-                  <AgriMartPayment />
-                </CartProvider>
-              }
-            />
-            <Route path="/ToPayment" element={<AgriMartPayment />} />
+
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
 

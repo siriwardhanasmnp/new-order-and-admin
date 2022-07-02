@@ -14,13 +14,14 @@ const Productpg = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const navigateToConfirmed = (post) => {
-    navigate(`/confirmed`, { state: post });
+    navigate(`/confirmed`, { state: post }); // here we will redirect user and send your data into state
   };
 
   const [searchOption, setSearchOption] = useState();
+  const [filterOption, setfilterOption] = useState();
 
   useEffect(() => {
-    axiosInstance.get('/products')
+    axiosInstance.get('/getProducts', {params: searchOption})
     .then((res) => {
       console.log(res.data);
       setPosts(res.data);
