@@ -56,19 +56,13 @@ const success = () => {
 
   //-------------------------------------------
 
-  //validation
-  // const {
-  //   register,
-  //   formState: { errors },
-  // } = useForm();
 
   const [form] = Form.useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
 
-  // console.log(form)
-  // const { isEmpty, items, cartTotal } = useCart();
+
   const [fullname, setfullname] = useState("");
   const [phonenumber, setphonenumber] = useState("");
   const [email, setemail] = useState("");
@@ -77,35 +71,6 @@ const success = () => {
   const [province, setprovince] = useState("");
   const [zipcode, setzipcode] = useState("");
 
-
-  // function handleClick(e) {
-  //   console.log('param',e);
-  //   setIsLoading(true);
-    
-  //   axiosInstance.post("/postorder", e)
-  //     .then((res) => {
-  //       // alert('Product added successfully');
-  //       notification.success({
-  //         message: "Details Added Succesfully",
-  //         style: {
-  //           marginTop: '20vh',
-  //         },
-  //       });
-  //       form.resetFields();
-  //       setIsLoading(false);
-  //     })
-
-  //     .catch((error) => {
-  //       // console.error();
-  //       notification.error({
-  //         message: "Something Went Wrong",
-  //         style: {
-  //           marginTop: '20vh',
-  //         },
-  //       });
-  //       setIsLoading(false);
-  //     });
-  //   }
 
 
   const [isLoading, setIsLoading] = useState(false);
@@ -140,69 +105,10 @@ const success = () => {
   };
 
 
-
-//   let handleSubmit = (e) => {
-
-//     console.log(e);
-
-//     try {
-//       const ShippingDetail = {
-//         fullname: fullname,
-//         phonenumber: phonenumber,
-//         email: email,
-//         address: address,
-//         city: city,
-//         province: province,
-//         zipcode: zipcode,
-//       };
-// console.log();
-// axios({
-//   method: "post",
-//   url: "http://localhost:8080/createShipping",
-//   data: ShippingDetail,
-// })
-//   .then((res) => {
-//     notification.e({
-//       message: "Product Added Successfully",
-//     });
-//     form.resetFields();
-//     setIsLoading(false);
-//   })
-
-//   .catch((error) => {
-//     notification.error({
-//       message: "Something Went Wrong",
-//     });
-//     setIsLoading(false);
-//   });
-//     } 
-//     catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-
-//Get Shipping details according to Current User
-// const [cartDetails, setCartDetails] = useState([]);
-//   useEffect(()=>{
-//     axiosInstance.post("/getList")
-//     // axios.get("http://localhost:8080/receiveToCart")
-//     .then(res => {
-//       console.log(res.data);
-//       setCartDetails(res.data)
-//   })npm start
-
-//   .catch(err=>{
-//     console.error(err)
-//   })
-//   },[])
-//   console.log("re-rendered");
-
-
   return (
     <div className='check'>
       <AgriMartCheckNavBar />
-      <div className="content">
+    
       <Row className='checkRow'>
         
       <Col className='checkCol' span={10}><div>
@@ -606,8 +512,6 @@ const success = () => {
             </Col>
           </Row>
          
-      
-      </div>
       </div>
   );
   
