@@ -140,7 +140,7 @@ const Cart =() =>{
      
     </Row>
     <div>
-        <AgriMartFooter/>
+        {/* <AgriMartFooter/> */}
       </div>
 </div>
   ); 
