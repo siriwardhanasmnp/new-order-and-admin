@@ -62,7 +62,7 @@ function App() {
             
         {/* Routes - Admin Portal */}
         <Route path="/portal" element={<AdminDashboard />} />
-        <Route path="/signin" element={<AdminSignIn />} />
+        <Route path="/adminSignin" element={<AdminSignIn />} />
         <Route path="/usermanagement" element={<AdminUserManagement/>} />
         <Route path="/adminproduct" element={<AdminProductManagement />} />
         <Route path="/adminorders" element={<AdminOrderManagement />} />

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { cardStyles } from "./StyleComponents";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/FirebaseConfig";
+import {Button} from 'antd';
+import empImage from '../../resources/images/emp.jpg';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -50,13 +52,15 @@ export default function Login() {
   }
 
   return (
+    <div>
+    <div style={{marginLeft:'500px'}}>
     <Section>
       <div>
-        <br /> <br />
+       
         <h1 style={{ textAlign: "center", marginTop: "3rem", color: "green" }}>
           {" "}
           Welcome to Agri Mart !
-        </h1>
+        </h1> <br /> <br />
         
         <div className="login_form">
           <h2>
@@ -133,6 +137,11 @@ export default function Login() {
         </div>
       </div>
     </Section>
+    </div>
+    <Link to='/adminSignin'>
+    <Button shape="circle" style={{height:'70px', width:'70px', float:'right', marginRight:'40px'}}><img  style={{height:'60', width:'60px', borderRadius:'50%'}} src={empImage}/></Button>
+    </Link>
+    </div>
   );
 }
 
