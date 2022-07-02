@@ -274,7 +274,7 @@ const success = () => {
                         
                           </Col>
                           <Col md={8}>
-                          <Link to="/ToPayment">
+                     
                           <Button
                                     type="primary"
                                     htmlType="submit"
@@ -283,7 +283,6 @@ const success = () => {
                                   >
                                     Save
                                   </Button>
-                              </Link>
                           </Col>
                         </Row>
                         <Space>
