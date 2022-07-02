@@ -10,25 +10,26 @@ import AgriMartPayment from "./pages/AgriMartPayment/AgriMartPayment";
 import AgriMartProfile from "./pages/AgriMartProfile/AgriMartProfile";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+
 import { withCurrentUserContext } from "./context/UserContext";
+
+
+
+import AdminSignIn from './pages/AdminSignIn/AdminSignIn';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard';
+import AdminUserManagement from './pages/AdminUserManagement/AdminUserManagement';
+import AdminProductManagement from './pages/AdminProductManagement/AdminProductManagement';
+import AdminOrderManagement from './pages/AdminOrderManagement/AdminOrderManagement'
+import AdminManageReview from './pages/AdminManageReview/AdminManageReview'
 
 function App() {
   return (
     <>
-      {/* <AgriMartPayment/> */}
-      {/* <AgriMartFarmerProductManagement/> */}
+
       <Router>
-        <div className="App">
           <Routes>
             <Route path="/" element={<AgriMartHome />} />
-            <Route
-              path="/ToProducts"
-              element={
-                <CartProvider>
-                  <Productpg />{" "}
-                </CartProvider>
-              }
-            />
+            <Route path="/ToProducts" element={ <CartProvider> <Productpg />{" "}</CartProvider>}/>
             <Route
               path="/ToCart"
               element={
@@ -57,9 +58,20 @@ function App() {
             <Route path="/ToPayment" element={<AgriMartPayment />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+
+            
+        {/* Routes - Admin Portal */}
+        <Route path="/portal" element={<AdminDashboard />} />
+        <Route path="/signin" element={<AdminSignIn />} />
+        <Route path="/usermanagement" element={<AdminUserManagement/>} />
+        <Route path="/adminproduct" element={<AdminProductManagement />} />
+        <Route path="/adminorders" element={<AdminOrderManagement />} />
+        <Route path="/adminreviews" element={<AdminManageReview/>} />
+              
           </Routes>
-        </div>
-      </Router>
+          
+      
+      </Router> 
     </>
   );
 }
