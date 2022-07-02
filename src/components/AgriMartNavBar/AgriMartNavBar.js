@@ -15,8 +15,7 @@ function AgriMartNavBar() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                     <Nav.Link href='/portal'>Farmer Portal</Nav.Link>
-                     <Nav.Link href='/portal'>Admin Portal</Nav.Link>
+                     <Nav.Link href='/'>Farmer Portal</Nav.Link>
                         <Nav.Link href="/aboutus">About Us</Nav.Link>
                     </Nav>
                     <Nav>
