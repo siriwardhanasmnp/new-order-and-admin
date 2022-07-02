@@ -4,10 +4,12 @@ import './AdminOrderManagement.css';
 import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import AgriMartAdminSideBar from '../../components/AgriMartSideBar/AgriMartSideBar';
 import 'antd/dist/antd.css';
-import { Tabs } from 'antd';
+import { Tabs, Popconfirm } from 'antd';
 import { Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import moment from 'moment';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { AiFillDelete } from "react-icons/ai";
 import { AiOutlineEdit  } from "react-icons/ai";
 
@@ -80,7 +82,8 @@ function AdminOrderManagement() {
                                         <td>RS.8500</td>
                                         <td>dd</td>
                                         <td>Pending</td>
-                                        <td><AiFillDelete/>  <AiOutlineEdit /></td>
+                                        <td > <Popconfirm title="Are you sure？" okText="Yes" cancelText="No"><AiFillDelete className='deleteIcon'/>
+  </Popconfirm> <AiOutlineEdit /></td>
                                         </tr>
                                     </thead>
                                     <tbody>

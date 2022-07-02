@@ -8,6 +8,8 @@ import { AiFillDelete } from "react-icons/ai";
 import { AiOutlineEdit  } from "react-icons/ai";
 import { Form, InputNumber, Popconfirm, Table, Typography, Input } from 'antd';
 import { useState } from 'react';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import DeleteIcon from '@mui/icons-material/Delete';
 const originData = [];
 
 for (let i = 0; i < 100; i++) {
@@ -204,7 +206,20 @@ function AdminManageReview () {
                         <td>S.U.Silva</td>
                         <td><Rate allowHalf defaultValue={2.5}></Rate> <tr>Highly reccommended</tr> </td>
                         <td>Published</td>
-                        <td ><AiFillDelete/>  <AiOutlineEdit /></td>
+                        <td ><Popconfirm
+                        title="Are you sure？"
+                        icon={
+                          <QuestionCircleOutlined
+                            style={{
+                              color: 'red',
+                            }}
+                            // onOk={() => removeItem(item.id)}
+                          />
+                        }
+                      ><button className='btn ms-2' >
+                         <DeleteIcon className='deleteicon'/>
+                       </button>
+                      </Popconfirm></td>
                         </tr>
                     
                     </tbody>

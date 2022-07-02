@@ -5,8 +5,10 @@ import AgriMartAdminNavBar from '../../components/AgriMartAdminNavBar/AgriMartAd
 import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import AgriMartAdminSideBar from '../../components/AgriMartSideBar/AgriMartSideBar';
 import { Table } from "react-bootstrap";
-import { Tabs } from 'antd';
+import { Tabs, Popconfirm } from 'antd';
 import moment from 'moment';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { AiFillDelete } from "react-icons/ai";
 import { AiOutlineEdit  } from "react-icons/ai";
 
@@ -44,7 +46,20 @@ function AdminUserManagement() {
                                           <td>S.T.Gunatilake</td>
                                           <td>samangunatilake@gmail.com</td>
                                           <td>072 345 6789</td>
-                                          <td><AiFillDelete/>  <AiOutlineEdit /></td>
+                                          <td><Popconfirm
+                        title="Are you sure？"
+                        icon={
+                          <QuestionCircleOutlined
+                            style={{
+                              color: 'red',
+                            }}
+                            // onOk={() => removeItem(item.id)}
+                          />
+                        }
+                      ><button className='btn ms-2' >
+                         <DeleteIcon className='deleteicon'/>
+                       </button>
+                      </Popconfirm></td>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -41,7 +41,7 @@ function AdminDashboard() {
       <div style={{float:'left', position:'fixed'}}><AgriMartAdminSideBar/></div>
       <div className="card-container" style={{margin:'0px 100px 0px 210px', position:'relative'}} >
 
-      <div style={{ width:'600px',marginTop:'100px'}}>
+      <div style={{ width:'600px',marginTop:'10px'}}>
       <MDBCol md="6">
       <div  className="active-pink-3 active-pink-4 mb-4">
         <input className="form-control" type="text" placeholder="Search" aria-label="Search" />

@@ -8,7 +8,9 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import 'antd/dist/antd.css';
 import { Button, notification } from "antd";
-import { Tabs } from 'antd';
+import { Tabs, Popconfirm } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
+import DeleteIcon from '@mui/icons-material/Delete';
 import moment from 'moment';
 import { AiFillDelete } from "react-icons/ai";
 import { AiOutlineEdit  } from "react-icons/ai";
@@ -104,7 +106,20 @@ function AdminProductManagement(props) {
                                           <td>25KG</td>
                                           <td>M.T.Silva</td>
                                           <td>Rs.9500</td>
-                                          <td><AiFillDelete/>  <AiOutlineEdit /></td>
+                                          <td><Popconfirm
+                        title="Are you sure？"
+                        icon={
+                          <QuestionCircleOutlined
+                            style={{
+                              color: 'red',
+                            }}
+                            // onOk={() => removeItem(item.id)}
+                          />
+                        }
+                      ><button className='btn ms-2' >
+                         <DeleteIcon className='deleteicon'/>
+                       </button>
+                      </Popconfirm></td>
                                         </tr>
                                     </thead>
                                     <tbody>
