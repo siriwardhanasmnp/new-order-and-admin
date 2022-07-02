@@ -15,6 +15,7 @@ import output from '../../resources/images/delivery.jpg';
 import fruits from '../../resources/images/fruits.jpeg';
 import vege from '../../resources/images/vege.jpeg';
 import spices from '../../resources/images/spices.jpeg';
+import category from '../../resources/images/fruitsimg.jpg';
 
 
 const contentStyle = {
@@ -34,24 +35,24 @@ export default function AgriMartHome() {
       <div>
         <AgriMartNavBar/>
       </div>
-<div >
-        <h1 style={{textAlign:'center', fontWeight:'bold', fontFamily:'railway', paddingTop:'110px'}}>Welcome to Agri Mart </h1>
+<div > <div style={{height:'20px', paddingTop:'100px'}}></div>
+        {/* <h1 style={{textAlign:'center', fontWeight:'bold', fontFamily:'railway', paddingTop:'110px'}}>Welcome to Agri Mart </h1> */}
 
 <div style={{ width:'100%', height:'550px'}}>
     
         <div>
         <Carousel autoplay={true} dotPosition='bottom'>
           <div>
-            <img style={{height:'400px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={land}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={category}/>
           </div>
           <div>
-            <img style={{height:'400px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={harvest}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={harvest}/>
           </div>
           <div>
-            <img style={{height:'400px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={pluck}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={pluck}/>
           </div>
           <div>
-            <img style={{height:'400px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={output}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={output}/>
           </div>
           </Carousel>
           </div>
