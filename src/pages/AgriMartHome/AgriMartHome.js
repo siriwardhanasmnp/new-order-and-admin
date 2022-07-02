@@ -3,7 +3,7 @@ import AgriMartNavBar from '../../components/AgriMartNavBar/AgriMartNavBar';
 import AgriMartFooter from '../../components/AgriMartFooter/AgriMartFooter';
 import './AgriMartHome.css';
 import { Button } from 'react-bootstrap';
-import { Carousel, Row, Col } from 'antd';
+import { Carousel, Row, Col, Card } from 'antd';
 import { Link } from 'react-router-dom';
 
 //images - corousel
@@ -67,14 +67,29 @@ export default function AgriMartHome() {
     <br/>   <br/>
 
     <Row justify='space-around'>
-<Col span={6} style={{marginLeft:'20px'}}>
-  <Link to='ToProducts'><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={vege}></img></Link>
+{/* Vegetables card */}
+
+<Col span={6} style={{marginLeft:'40px'}}>
+  <Link to='ToProducts'><Card style={{height: '400px', width:'310px', borderRadius:'10px', backgroundColor:'#001a00'}} >
+    <Row><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={vege}></img></Row>
+    <Row style={{height:'50px', width:'260px', backgroundColor:'#eeffe6',borderRadius:'0px 0px 10px 10px '}}><h3 style={{color:'black', fontWeight:'bolder', fontFamily:'serif', marginLeft:'50px'}}>Vegetables</h3></Row>
+  </Card></Link>
 </Col>
-<Col span={6}>
-<Link to='ToProducts'><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={fruits}></img></Link>
+
+{/* fruit card */}
+<Col span={6} style={{marginLeft:'40px'}}>
+  <Link to='ToProducts'><Card style={{height: '400px', width:'310px', borderRadius:'10px', backgroundColor:'#001a00'}} >
+    <Row><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={fruits}></img></Row>
+    <Row style={{height:'50px', width:'260px', backgroundColor:'#eeffe6',borderRadius:'0px 0px 10px 10px '}}><h3 style={{color:'black', fontWeight:'bolder', fontFamily:'serif', marginLeft:'80px'}}>Fruits</h3></Row>
+  </Card></Link>
 </Col>
-<Col span={6}>
-<Link to='ToProducts'><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={spices}></img></Link>
+
+{/* spice card */}
+<Col span={6} style={{marginLeft:'40px'}}>
+  <Link to='ToProducts'><Card style={{height: '400px', width:'310px', borderRadius:'10px', backgroundColor:'#001a00'}} >
+    <Row><img style={{height: '300px', width:'260px', borderRadius:'10px'}} src={spices}></img></Row>
+    <Row style={{height:'50px', width:'260px', backgroundColor:'#eeffe6',borderRadius:'0px 0px 10px 10px '}}><h3 style={{color:'black', fontWeight:'bolder', fontFamily:'serif', marginLeft:'80px'}}>Spices</h3></Row>
+  </Card></Link>
 </Col>
     </Row>
 
