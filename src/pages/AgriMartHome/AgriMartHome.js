@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 //images - corousel
 import land from '../../resources/images/land.jpg';
-import harvest from '../../resources/images/pluck.jpg';
-import pluck from '../../resources/images/harvest.jpg';
+import spice from '../../resources/images/spice.jpg';
+import veges from '../../resources/images/veges.jpg';
 import output from '../../resources/images/delivery.jpg';
 
 import fruits from '../../resources/images/fruits.jpeg';
@@ -46,14 +46,12 @@ export default function AgriMartHome() {
             <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={category}/>
           </div>
           <div>
-            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={harvest}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={spice}/>
           </div>
           <div>
-            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={pluck}/>
+            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={veges}/>
           </div>
-          <div>
-            <img style={{height:'500px', width:'100%', marginTop:'20px', borderRadius:'10px'}} src={output}/>
-          </div>
+        
           </Carousel>
           </div>
  
