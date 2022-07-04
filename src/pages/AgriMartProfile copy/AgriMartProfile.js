@@ -47,7 +47,7 @@ function AgriMartProfile(props) {
   let getOneProduct = (productId) => {
     axios({
       method: "get",
-      url: `http://localhost:8080/products/${productId}`,
+      url: `http://localhost:8080/getUser/${userId}`,
 
     })
       .then((res) => {

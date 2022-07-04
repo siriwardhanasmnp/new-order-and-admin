@@ -11,8 +11,14 @@ export const axiosInstance = new Axios({
     validateStatus: (status)=> status >= 200 && status < 300,
 });
 
+let at = null;
 axiosInstance.interceptors.request.use(async (config) => {
     const accessToken = await auth?.currentUser?.getIdToken();
+    if(at !== accessToken){
+
+      console.log(accessToken);
+      at = accessToken;
+    }
     const tokenType = "Bearer";
     if(accessToken && config.headers){
         config.headers.Authorization = `${tokenType} ${accessToken}`;
